@@ -1,0 +1,21 @@
+{
+  "name": "mafs-vue",
+  "version": "0.1.0",
+  "description": "Vue Component for interactive vue, inspired by mafs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "faga",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^18.11.18",
+    "@typescript-eslint/eslint-plugin": "^5.48.0",
+    "@typescript-eslint/parser": "^5.48.0",
+    "eslint": "^8.31.0",
+    "tsup": "^6.5.0"
+  },
+  "dependencies": {
+    "vue": "^3.2.45"
+  }
+}

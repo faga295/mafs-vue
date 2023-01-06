@@ -1,0 +1,11 @@
+{
+    "extends": ["./tsconfig.base.json"],
+    "compilerOptions": {
+        "baseUrl": ".",
+        "composite": true,
+        "paths": {
+            "mafsv": ["src"]
+        }
+    }, 
+    "include":["./playground/src/*", "src/*"]
+}
