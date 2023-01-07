@@ -12,5 +12,10 @@ export default defineConfig({
         replacement: path.resolve(__dirname, '../src/index')
       }
     ]
+  },
+  esbuild:{
+    jsx: "transform",
+    jsxFactory: "h",
+    jsxFragment: "Fragment"
   }
 })

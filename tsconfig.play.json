@@ -1,11 +1,11 @@
 {
-    "extends": ["./tsconfig.base.json"],
+    "extends": ["./tsconfig.web.json"],
     "compilerOptions": {
         "baseUrl": ".",
-        "composite": true,
         "paths": {
             "mafsv": ["src"]
-        }
+        },
+        "composite": true
     }, 
-    "include":["./playground/src/*", "src/*"]
+    "include":["./playground/src/**/*.ts","./playground/src/**/*.vue", "src/*", "./*.d.ts", "volar.d.ts.ts"volar.d.ts
 }
