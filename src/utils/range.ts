@@ -1,3 +1,8 @@
-export function range(xLine: number, subDivision: number){
-    return Array.from({ length: subDivision}, (_,index) => index * xLine / subDivision)
+export function range(min: number, max: number, step = 1): number[] {
+	const result = []
+	for (let i = min; i < max - step / 2; i += step) {
+		result.push(i)
+	}
+	result.push(max)
+	return result
 }

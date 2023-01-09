@@ -1,24 +1,96 @@
-import { defineComponent, h, Fragment } from "vue";
-import GridPattern from "./GridPattern";
+import { range } from "../../utils/range"
+import { defineComponent, h, Fragment, inject } from "vue"
+import { mafsContextInjectionKey, paneContextInjectionKey } from "../mafs/interface"
+import GridPattern from "./GridPattern"
+import type { Axis } from "./interface"
 import './style/index.css'
 let increment = 1
+
+const defaultAxis = {
+	line: 1,
+	labels: (index:number) => String(index)
+}
+export const cartesianCoordinatesProps = {
+	xAxis: {
+		type: Object,
+		default:() => defaultAxis
+	},
+	yAxis: {
+		type: Object,
+		default:() => defaultAxis
+	}
+}
 export default defineComponent({
-    name: "CartesianCoordinates",
-    setup(){
-        const id = `mafs-grid-${increment++}`
-        return {
-            id
-        }
-    },
-    render(){
-        return (
-            <>
-                <defs>
-                    <GridPattern id={this.id} xLines={1} yLines={1}></GridPattern>
-                </defs>
-                <rect fill={`url(#${this.id})`} width="200" height={200} x={0} y={0}></rect>
-                {/* <line x1={0} x2={1} y1={0} y2={4} style={{stroke: '#000'}}></line> */}
-            </>
-        )
-    }
+	name: "CartesianCoordinates",
+	props: cartesianCoordinatesProps,
+	setup(props){
+		const id = `mafs-grid-${increment++}`
+		const paneContext = inject(paneContextInjectionKey)
+		const mafsContext = inject(mafsContextInjectionKey)
+
+		const width = paneContext?.width ?? 500
+		const height = paneContext?.height ?? 500
+
+		const scaleX = mafsContext?.scaleX ?? 42
+		const scaleY = mafsContext?.scaleY ?? 42
+
+		const { line: xLine } = props.xAxis
+		const { line: yLine } = props.yAxis
+		const xGridPixel = xLine * scaleX
+		const yGridPixel = yLine * scaleY
+        
+		const xs = range(-Math.ceil(width/xGridPixel), Math.ceil(width/xGridPixel), props.xAxis.line)
+        
+		const ys = range(-Math.ceil(width/yGridPixel), Math.ceil(width/yGridPixel), props.yAxis.line)
+
+		console.log(xs, ys)
+        
+		return {
+			id,
+			width,
+			height,
+			xs,
+			ys,
+			xGridPixel,
+			yGridPixel
+		}
+	},
+	render(){
+		const XLables:JSX.Element = (
+			<g>
+				{
+					this.xs.map(line => (
+						<text>{this.xAxis.labels(line)}</text>
+					))
+				} 
+			</g>
+		)
+		return (
+			<>
+				<defs>
+					<GridPattern id={this.id} xLines={this.xAxis.line} yLines={this.yAxis.line}></GridPattern>
+				</defs>
+				<rect fill={`url(#${this.id})`} width={this.width} height={this.height} x={-Math.round(this.width/2)} y={-Math.round(this.height/2)}></rect>
+				<line x1={10000000} x2={-10000000} y1={0} y2={0} style={{stroke: 'var(--m-axis-color)'}}></line>
+				<line x1={0} x2={0} y1={10000000} y2={-10000000} style={{stroke: 'var(--m-axis-color)'}}></line>
+				<g>
+					{
+						this.xs.map((line) => {
+							if(!line) return
+							return <text x={line * this.xGridPixel} y={20}>{this.xAxis.labels(line)}</text>
+						})
+					} 
+				</g>
+				<g>
+					{
+						this.ys.map((line) => {
+							if(!line) return
+							return <text x={0} y={line * this.yGridPixel}>{this.yAxis.labels(line)}</text>
+						})
+					}  
+				</g>
+				{/* <line x1={0} x2={1} y1={0} y2={4} style={{stroke: '#000'}}></line> */}
+			</>
+		)
+	}
 })

@@ -1,5 +1,5 @@
 {
-    "extends": ["./tsconfig.base.json"],
+    "extends": "./tsconfig.base.json",
     "compilerOptions": {
         "baseUrl": ".",
         "jsx": "preserve",
@@ -7,10 +7,10 @@
         "jsxFragmentFactory": "Fragment",
         "composite": true,
         "paths":{
-            "mafsv": ["src"]
+            "mafsv": ["./src"]
         }
     },
-    "include": ["src/**/*.ts", "src/**/*.tsx", "./*.d.ts", "volar.d.ts"],
+    "include": ["./src/**/*.ts", "./src/**/*.tsx", "./*.d.ts", "volar.d.ts"],
     "exclude": ["node_modules"]
     
 }

@@ -5,7 +5,7 @@ import { appendFile } from 'fs';
 </script>
 
 <template>
-  <div>
+  <div :style="{width: '500px'}">
     <Mafs>
       <CartesianCoordinates></CartesianCoordinates>
     </Mafs>
