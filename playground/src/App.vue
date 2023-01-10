@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { appendFile } from 'fs';
 
 
 </script>
@@ -7,7 +6,8 @@ import { appendFile } from 'fs';
 <template>
   <div :style="{width: '500px'}">
     <Mafs>
-      <CartesianCoordinates></CartesianCoordinates>
+      <CartesianCoordinates :subdivision="4"></CartesianCoordinates>
+      <PlotOfx :y="(x) => Math.sin(x)"></PlotOfx>
     </Mafs>
   </div>
 </template>

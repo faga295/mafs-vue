@@ -19,7 +19,7 @@
 	],
 	"rules": {
 		"@typescript-eslint/no-unused-vars": "off",
-		"indent":["error", "tab"],
+		"indent":["error", 2],
 		"semi": ["error","never"]
 	}
 }
