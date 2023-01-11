@@ -3,7 +3,6 @@
     {"path": "./tsconfig.play.json"},
     {"path": "./tsconfig.node.json"},
     {"path": "./tsconfig.esm.json"},
-    {"path": "./tsconfig.cjs.json"}
   ]
 }
   

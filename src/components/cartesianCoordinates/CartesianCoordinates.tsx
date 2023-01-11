@@ -3,7 +3,6 @@ import { defineComponent, h, Fragment, inject, PropType } from "vue"
 import { defaultMafsContext, defaultPaneContext, mafsContextInjectionKey, paneContextInjectionKey } from "../mafs/interface"
 import GridPattern from "./GridPattern"
 import type { Axis } from "./interface"
-import './style/index.css'
 let increment = 1
 
 const defaultAxis = {

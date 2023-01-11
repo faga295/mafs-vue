@@ -1,7 +1,8 @@
 import { createApp } from 'vue'
-import './style.css'
-import App from './App.vue'
 import Mafsv from 'mafsv'
+import './style.css'
+import 'mafsv/dist/index.css'
+import App from './App.vue'
 
 
 const app = createApp(App)

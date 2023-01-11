@@ -2,7 +2,9 @@
   "name": "mafsv",
   "version": "0.1.0",
   "description": "Vue Component for interactive vue, inspired by mafs",
-  "main": "index.js",
+  "main": "lib/index.js",
+  "module":"es/index.js",
+  "types": "es/index.d.ts",
   "files": [
     "dist",
     "es",
@@ -11,7 +13,7 @@
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "rollup --config rollup.config.js && tsc --project tsconfig.esm.json && tsc -b --force tsconfig.cjs.json"
+    "build": "rollup --config rollup.config.js && tsc -b --force tsconfig.esm.json && tsc -b --force tsconfig.cjs.json"
   },
   "author": "faga",
   "type": "module",

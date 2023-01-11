@@ -9,7 +9,6 @@ import {
 import { type MafsContext, mafsContextInjectionKey, paneContextInjectionKey, ViewBox } from "./interface"
 import { useResizeObserver } from '@vueuse/core'
 
-import './style/index.scss'
 
 export const mafsProps = {
   width: {

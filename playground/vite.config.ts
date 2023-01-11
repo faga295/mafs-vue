@@ -6,12 +6,12 @@ import vue from '@vitejs/plugin-vue'
 export default defineConfig({
   plugins: [vue()],
   resolve: {
-    alias: [
-      {
-        find: /^mafsv$/,
-        replacement: path.resolve(__dirname, '../src/index')
-      }
-    ]
+    // alias: [
+    //   {
+    //     find: /^mafsv$/,
+    //     replacement: path.resolve(__dirname, '../src/index')
+    //   }
+    // ]
   },
   esbuild:{
     jsx: "transform",
