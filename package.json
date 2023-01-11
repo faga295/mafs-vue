@@ -4,6 +4,8 @@
   "description": "Vue Component for interactive vue, inspired by mafs",
   "main": "lib/index.js",
   "module":"es/index.js",
+  "unpkg": "dist/index.prod.js",
+  "jsdelivr": "dist/index.prod.js",
   "types": "es/index.d.ts",
   "files": [
     "dist",
