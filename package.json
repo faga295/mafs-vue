@@ -13,6 +13,11 @@
     "lib",
     "volar.d.ts"
   ],
+  "keywords": [
+    "mafs",
+    "component library",
+    "vue"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rollup --config rollup.config.js && tsc -b --force tsconfig.esm.json && tsc -b --force tsconfig.cjs.json"
