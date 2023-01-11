@@ -1,0 +1,10 @@
+{
+    "name": "@mafsv/docs",
+    "private": true,
+    "scripts": {
+        "dev": "vitepress docs dev"
+    },
+    "dependencies": {
+        "vitepress": "^1.0.0-alpha.35"
+    }
+}

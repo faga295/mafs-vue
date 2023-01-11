@@ -3,21 +3,21 @@ import * as components from './component'
 
 export * from './component'
 function registerComponent(app:App, component:Component){
-    const { name } = component
-    console.log(component);
-    
-    const registered = name && app.component(name)
-    if(!registered) {
-        app.component(name, component)
-    }
+  const { name } = component
+  console.log(component)
+  if(!name) return 
+  const registered = name && app.component(name)
+  if(!registered) {
+    app.component(name, component)
+  }
 }
 
 export default  {
-    install(app: App){
-        Object.values(components).forEach(component => {
+  install(app: App){
+    Object.values(components).forEach(component => {
             
-            registerComponent(app, component)
-        })
-    }
+      registerComponent(app, component)
+    })
+  }
 }
-console.log(components);
+console.log(components)
