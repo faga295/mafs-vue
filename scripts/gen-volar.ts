@@ -1,6 +1,6 @@
-import * as fs from 'fs'
-import * as path from 'path'
-import * as process from 'process'
+import fs from 'fs'
+import path from 'path'
+import process from 'process'
 import * as components from '../src/component'
 
 const genCode = (mainCode: string) =>  `declare module '@vue/runtime-core' {

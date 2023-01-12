@@ -22,7 +22,7 @@ const baseConfig = defineConfig({
   plugins: [
     nodeResolve({ extensions }),
     esbuild({
-      tsconfig: path.resolve('./tsconfig.esbuild.json'),
+      tsconfig: path.resolve('./tsconfig.base.json'),
       target: 'esnext',
       sourceMap: true
     }),

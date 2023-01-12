@@ -12,11 +12,10 @@ import { useResizeObserver } from '@vueuse/core'
 
 export const mafsProps = {
   width: {
-    type: [Number,String],
-    default: '100%' 
+    type: [Number],
   },
   height:{
-    type: [Number,String],
+    type: [Number],
     default: 500 
   },
   viewBox:{
@@ -28,7 +27,7 @@ const Mafs = defineComponent({
   name:'Mafs',
   props: mafsProps,
   setup(props){
-    const width = ref<number>(500)
+    const width = ref<number>(props.width || 500)
     const height = ref<number>(500)
 
     const mafsContainerRef = ref<HTMLElement | null>(null)

@@ -30,5 +30,6 @@ export const defaultPaneContext:PaneContext = {
 
 export interface ViewBox {
   x: [number, number],
-  y: [number, number]
+  y: [number, number],
+  padding: number
 }
