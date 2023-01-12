@@ -1,5 +1,5 @@
 import { range } from "../../utils/range"
-import { defineComponent, h, Fragment, inject, PropType } from "vue"
+import { defineComponent, h, Fragment, inject, PropType, computed, watch } from "vue"
 import { defaultMafsContext, defaultPaneContext, mafsContextInjectionKey, paneContextInjectionKey } from "../mafs/interface"
 import GridPattern from "./GridPattern"
 import type { Axis } from "./interface"
@@ -37,17 +37,17 @@ export default defineComponent({
 
     const { line: xLine } = props.xAxis
     const { line: yLine } = props.yAxis
-    const xGridPixel = xLine * scaleX
-    const yGridPixel = yLine * scaleY
+    const xGridPixel = computed(() => xLine * scaleX.value)
+    const yGridPixel = computed(() => yLine * scaleY.value)
+   
+    const xMin = computed(() => -Math.ceil(width.value/2/xGridPixel.value))
+    const xMax = computed(() => Math.ceil(width.value/2/xGridPixel.value))
 
-    const xMin = -Math.ceil(width/2/xGridPixel)
-    const xMax = Math.ceil(width/2/xGridPixel)
-
-    const yMin = -Math.ceil(height/2/yGridPixel)
-    const yMax = Math.ceil(height/2/yGridPixel)
-    const xs = range(-Math.ceil(width/xGridPixel), Math.ceil(width/xGridPixel), props.xAxis.line)
+    const yMin = computed(() => -Math.ceil(height.value/2/yGridPixel.value))
+    const yMax = computed(() => Math.ceil(height.value/2/yGridPixel.value))
+    const xs = range(-Math.ceil(width.value/xGridPixel.value), Math.ceil(width.value/xGridPixel.value), props.xAxis.line)
         
-    const ys = range(-Math.ceil(height/yGridPixel), Math.ceil(height/yGridPixel), props.yAxis.line)
+    const ys = range(-Math.ceil(height.value/yGridPixel.value), Math.ceil(height.value/yGridPixel.value), props.yAxis.line)
 
     
 

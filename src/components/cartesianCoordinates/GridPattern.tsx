@@ -26,8 +26,8 @@ export default defineComponent({
     const { scaleX, scaleY } = inject(mafsContextInjectionKey, defaultMafsContext)
 
     // scale to real pixel
-    const width = computed(() => props.xLines * scaleX)
-    const height = computed(() => props.yLines * scaleY)
+    const width = computed(() => props.xLines * scaleX.value)
+    const height = computed(() => props.yLines * scaleY.value)
 		
     const xs = range(0, props.xLines * width.value, 1/props.subdivision * width.value)
     const ys = range(0, props.yLines * height.value, 1/props.subdivision * height.value)

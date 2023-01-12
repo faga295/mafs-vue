@@ -1,7 +1,7 @@
 import { createApp } from 'vue'
 import Mafsv from 'mafsv'
 import './style.css'
-import 'mafsv/dist/index.css'
+import '../../src/style/mafs.scss'
 import App from './App.vue'
 
 

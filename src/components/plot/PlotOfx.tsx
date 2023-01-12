@@ -3,6 +3,7 @@ import {
   defineComponent,
   h,
   inject,
+  computed,
   type PropType
 } from 'vue'
 import { defaultMafsContext, defaultPaneContext, mafsContextInjectionKey, paneContextInjectionKey } from '../mafs/interface'
@@ -25,11 +26,14 @@ export default defineComponent({
 
     const { scaleX, scaleY } = mafsContext
     const { xRange } = paneContext
-    const range = divide(xRange[0], xRange[1], 500)
-    const d = range.map((x, index) => {
-      if(!index) return `M ${x * scaleX},${props.y(x) * scaleY}`
-      return `L ${x * scaleX},${props.y(x) * scaleY}`
-    }).join(" ")
+    console.log(scaleX.value, scaleY.value)
+    
+    const range = computed(() => divide(xRange[0].value, xRange[1].value, 500))
+    
+    const d = computed(() =>range.value.map((x, index) => {
+      if(!index) return `M ${x * scaleX.value},${props.y(x) * scaleY.value}`
+      return `L ${x * scaleX.value},${props.y(x) * scaleY.value}`
+    }).join(" "))
     return {
       d
     }
