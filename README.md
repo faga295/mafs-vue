@@ -1,4 +1,4 @@
-# Mafs-vue
+# Mafs-vue(WIP)
 Vue Component for interactive math, reproduction of [mafs](https://github.com/stevenpetryk/mafs)
 
 ## Install

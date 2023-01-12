@@ -1,4 +1,9 @@
 {
+  "compilerOptions": {
+    "paths": {
+      "mafsv": ["./src"]
+    }
+  },
   "references": [
     {"path": "./tsconfig.play.json"},
     {"path": "./tsconfig.node.json"},
