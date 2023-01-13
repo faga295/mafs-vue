@@ -3,6 +3,8 @@ declare module '@vue/runtime-core' {
       CartesianCoordinates: typeof import('mafsv')['CartesianCoordinates']
       Mafs: typeof import('mafsv')['Mafs']
       PlotOfx: typeof import('mafsv')['PlotOfx']
+      Point: typeof import('mafsv')['Point']
+      Text: typeof import('mafsv')['Text']
        
   }
 }

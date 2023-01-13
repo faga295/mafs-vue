@@ -37,15 +37,15 @@ const Mafs = defineComponent({
   props: mafsProps,
   setup(props){
     const { viewBox } = props
-    const width = ref(1)
+    const width = ref<number>(1)
     const height = ref<number>(props.height)
 
     const desiredWidth = props.width === 'auto' ? '100%' : props.width
 
     const mafsContainerRef = ref<HTMLElement | null>(null)
 
-    const scaleX = computed(() => width.value/(viewBox.x[1] - viewBox.x[0] + viewBox.padding))
-    const scaleY = computed(() => height.value/(viewBox.y[1] - viewBox.y[0] + viewBox.padding))
+    const scaleX = computed(() => width.value/(viewBox.x[1] - viewBox.x[0] + (viewBox?.padding ?? 0.5)))
+    const scaleY = computed(() => height.value/(viewBox.y[1] - viewBox.y[0] + (viewBox?.padding ?? 0.5)))
     const mafsContext:MafsContext = {
       scaleX,
       scaleY
