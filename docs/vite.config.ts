@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite'
 import path from 'path'
-import { MarkdownTransform } from '~/plugins/mdTransform'
+import { MarkdownTransform } from './.vitepress/plugins/mdTransform'
 
 export default defineConfig({
   resolve: {

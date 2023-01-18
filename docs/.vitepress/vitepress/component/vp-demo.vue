@@ -1,10 +1,10 @@
 <script lang="ts" setup>
-const demoProps = {
+
+const props = defineProps({
     source:{
         type: String
     }
-}
-const props = defineProps(demoProps)
+})
 </script>
 
 <template>
