@@ -2,9 +2,14 @@
     "name": "@mafsv/docs",
     "private": true,
     "scripts": {
-        "dev": "vitepress dev docs"
+        "dev": "vitepress dev"
     },
     "dependencies": {
+        "fast-glob": "^3.2.12",
+        "markdown-it-container": "^3.0.0",
         "vitepress": "^1.0.0-alpha.35"
+    },
+    "devDependencies": {
+        "vite": "^4.0.4"
     }
 }

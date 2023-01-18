@@ -19,8 +19,9 @@
     "vue"
   ],
   "scripts": {
-    "dev": "pnpm -C playground dev",
-    "build": "rollup --config rollup.config.js && tsc -b --force tsconfig.esm.json && tsc -b --force tsconfig.cjs.json",
+    "dev:play": "pnpm -C playground dev",
+    "dev:docs": "pnpm -C docs dev",
+    "build:package": "rollup --config rollup.config.js && tsc -b --force tsconfig.esm.json && tsc -b --force tsconfig.cjs.json",
     "build:style": "gulp --require @esbuild-kit/cjs-loader",
     "gen-volar-dts": "esbuild scripts/gen-volar.js --bundle --platform=node --tsconfig=./tsconfig.esbuild.json | node"
   },
