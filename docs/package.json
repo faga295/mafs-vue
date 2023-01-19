@@ -10,6 +10,7 @@
         "vitepress": "^1.0.0-alpha.35"
     },
     "devDependencies": {
+        "unocss": "^0.48.4",
         "vite": "^4.0.4"
     }
 }

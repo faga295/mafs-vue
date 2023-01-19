@@ -34,11 +34,12 @@ export function MarkdownTransform(): Plugin {
       //   code = transformComponentMarkdown(id, componentId, code, append)
       // }
 
-      return combineMarkdown(
-        code,
-        [combineScriptSetup(append.scriptSetups), ...append.headers],
-        append.footers
-      )
+      // return combineMarkdown(
+      //   code,
+      //   [combineScriptSetup(append.scriptSetups), ...append.headers],
+      //   append.footers
+      // )
+      return combineScriptSetup(append.scriptSetups) + code
     },
   }
 }

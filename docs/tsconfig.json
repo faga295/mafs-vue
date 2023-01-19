@@ -16,7 +16,9 @@
         "~/*": ["./.vitepress/*"]
       },
       "types": ["../volar.d.ts"],
-      "jsx": "preserve"
+      "jsx": "preserve",
+      "jsxFactory": "h",
+      "jsxFragmentFactory": "Fragment"
     },
     "include": ["**/*", ".vitepress/**/*"],
     "exclude": ["node_modules"]
