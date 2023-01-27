@@ -31,37 +31,29 @@ export default defineComponent({
     const paneContext = inject(paneContextInjectionKey, defaultPaneContext)
     const mafsContext = inject(mafsContextInjectionKey, defaultMafsContext)
 
-    const { width, height } = paneContext
+    const { width, height, xRange, yRange } = paneContext
 
     const { scaleX, scaleY } = mafsContext
 
     const { line: xLine } = props.xAxis
     const { line: yLine } = props.yAxis
-    const xGridPixel = computed(() => xLine * scaleX.value)
-    const yGridPixel = computed(() => yLine * scaleY.value)
+    const xGridPixel = computed(() => scaleX.value(xLine))
+    const yGridPixel = computed(() => scaleY.value(yLine))
    
-    const xMin = computed(() => -Math.ceil(width.value/2/xGridPixel.value))
-    const xMax = computed(() => Math.ceil(width.value/2/xGridPixel.value))
-
-    const yMin = computed(() => -Math.ceil(height.value/2/yGridPixel.value))
-    const yMax = computed(() => Math.ceil(height.value/2/yGridPixel.value))
     const xs = range(-Math.ceil(width.value/xGridPixel.value), Math.ceil(width.value/xGridPixel.value), props.xAxis.line)
         
     const ys = range(-Math.ceil(height.value/yGridPixel.value), Math.ceil(height.value/yGridPixel.value), props.yAxis.line)
 
     
 
-    paneContext.xRange =  [xMin, xMax]
-    paneContext.yRange =  [yMin, yMax]
-        
     return {
       id,
       width,
       height,
+      scaleX,
+      scaleY,
       xs,
-      ys,
-      xGridPixel,
-      yGridPixel
+      ys
     }
   },
   render(){
@@ -70,7 +62,7 @@ export default defineComponent({
         {
           this.xs.map((line) => {
             if(!line) return
-            return <text x={line * this.xGridPixel} y={20}>{this.xAxis.labels(line)}</text>
+            return <text style={{fill: "var(--m-text-color)"}} text-anchor="middle" x={this.scaleX(line)} y={20}>{this.xAxis.labels(line)}</text>
           })
         } 
       </g>
@@ -80,7 +72,7 @@ export default defineComponent({
         {
           this.ys.map((line) => {
             if(!line) return
-            return <text x={5} y={-line * this.yGridPixel}>{this.yAxis.labels(line)}</text>
+            return <text style={{fill: "var(--m-text-color)"}} dominant-baseline="central" x={5} y={this.scaleY(-line)}>{this.yAxis.labels(line)}</text>
           })
         }  
       </g>

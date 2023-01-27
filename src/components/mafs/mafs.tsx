@@ -9,7 +9,7 @@ import {
   type PropType
 } from "vue"
 import { type MafsContext, mafsContextInjectionKey, paneContextInjectionKey, ViewBox } from "./interface"
-import { useResizeObserver } from "@vueuse/core"
+import { useResizeObserver, useDraggable } from "@vueuse/core"
 
 export const mafsProps = {
   width: {
@@ -39,25 +39,56 @@ const Mafs = defineComponent({
     const { viewBox } = props
     const width = ref<number>(1)
     const height = ref<number>(props.height)
+    const offset = ref<[number, number]>([0, 0])
+    // some superfluous action since useDraggable design discrepancies
+    let offsetStore: [number, number]= [0, 0]
 
     const desiredWidth = props.width === 'auto' ? '100%' : props.width
 
     const mafsContainerRef = ref<HTMLElement | null>(null)
+    const mafsSvgRef = ref<HTMLElement | null>(null)
 
-    const scaleX = computed(() => width.value/(viewBox.x[1] - viewBox.x[0] + (viewBox?.padding ?? 0.5)))
-    const scaleY = computed(() => height.value/(viewBox.y[1] - viewBox.y[0] + (viewBox?.padding ?? 0.5)))
+    const mafsSvgRect = computed(() => mafsSvgRef.value?.getBoundingClientRect()) 
+    
+    const padding = viewBox?.padding ?? 0.5
+    const aoi = {
+      xMin: computed(() => viewBox.x[0] - padding + offset.value[0]),
+      xMax: computed(() => viewBox.x[1] + padding + offset.value[0]),
+      yMin: computed(() => viewBox.y[0] - padding + offset.value[1]),
+      yMax: computed(() => viewBox.y[1] - padding + offset.value[1])
+    }
+    const xSpan = aoi.xMax.value - aoi.xMin.value
+    const ySpan = aoi.yMax.value - aoi.yMin.value
+
+    const scaleX = computed(() => (val: number) => val *  width.value/(viewBox.x[1] - viewBox.x[0] + padding))
+    const scaleY = computed(() => (val: number) => val * height.value/(viewBox.y[1] - viewBox.y[0] + padding))
+
     const mafsContext:MafsContext = {
       scaleX,
       scaleY
     }
-   
-    watch(scaleX, () => {
-      console.log(scaleX.value)
-    })
+    
     onMounted(() => {
       useResizeObserver(mafsContainerRef, (entries) => {
         const entry = entries[0]
         width.value = entry.contentRect.width
+      })
+      useDraggable(mafsSvgRef.value, {
+        preventDefault: true,
+        onStart(){
+          offsetStore = [...offset.value]
+        },
+        draggingElement: mafsSvgRef.value,
+        onMove(position){
+          const mx = position.x - (mafsSvgRect.value?.left ?? 0)
+          const my = position.y - (mafsSvgRect.value?.top ?? 0)
+          offset.value[0] = (-mx/width.value * xSpan)  + offsetStore[0]
+          offset.value[1] = (-my/height.value * ySpan) + offsetStore[1]
+        },
+        initialValue:{
+          x: 100,
+          y: 100
+        }
       })
     })
     provide(
@@ -69,22 +100,34 @@ const Mafs = defineComponent({
       {
         width: width,
         height: height,
-        xRange: [ref(0), ref(0)],
-        yRange: [ref(0), ref(0)]
+        xRange: [aoi.xMin, aoi.xMax],
+        yRange: [aoi.yMin, aoi.yMax]
       }
     )
     
     return {
       mafsContainerRef,
+      mafsSvgRef,
       width,
       height,
       desiredWidth,
+      offset,
+      aoi,
+      scaleX,
+      scaleY
     }
   },
   render(){
     return (
       <div class={`mafs-container`} ref="mafsContainerRef" style={{"width": this.desiredWidth}}>
-        <svg width={this.width} height={this.height}  preserveAspectRatio="xMidYMin" viewBox={`${-Math.round(this.width/2)} ${-Math.round(this.height/2)} ${this.width} ${this.height}`}>
+        <svg
+          ref="mafsSvgRef" 
+          width={this.width} 
+          height={this.height} 
+          preserveAspectRatio="xMidYMin"
+          style={{background: '#000'}}
+          viewBox={`${this.scaleX(this.aoi.xMin.value)} ${this.scaleY(this.aoi.yMin.value)} ${this.width} ${this.height}`}
+        >
           {
             this.$slots.default?.()
           }

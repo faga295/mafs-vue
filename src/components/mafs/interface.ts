@@ -2,14 +2,16 @@ import { InjectionKey, ref, type Ref } from "vue"
 
 export const mafsContextInjectionKey:InjectionKey<MafsContext> = Symbol('mafs-context')
 
+const defaultScale = (val: number) => val * 42
 export const defaultMafsContext:MafsContext = {
-  scaleX: ref(42),
-  scaleY: ref(42)
+  scaleX: ref(defaultScale),
+  scaleY: ref(defaultScale)
 }
 
+type Scale = (val:number) => number
 export interface MafsContext {
-  scaleX: Ref<number>,
-  scaleY: Ref<number>,
+  scaleX: Ref<Scale>,
+  scaleY: Ref<Scale>,
 }
 
 export const paneContextInjectionKey:InjectionKey<PaneContext> = Symbol('pane-context')

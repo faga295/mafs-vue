@@ -5,12 +5,21 @@
         "dev": "vitepress dev"
     },
     "dependencies": {
+        "@highlightjs/vue-plugin": "^2.1.0",
+        "@vicons/ionicons5": "^0.12.0",
+        "escape-html": "^1.0.3",
         "fast-glob": "^3.2.12",
+        "highlight.js": "^11.7.0",
         "markdown-it-container": "^3.0.0",
+        "naive-ui": "^2.34.3",
+        "prism-theme-vars": "^0.2.4",
+        "prismjs": "^1.29.0",
         "vitepress": "^1.0.0-alpha.35"
     },
     "devDependencies": {
         "unocss": "^0.48.4",
+        "unplugin-auto-import": "^0.12.1",
+        "unplugin-vue-components": "^0.22.12",
         "vite": "^4.0.4"
     }
 }

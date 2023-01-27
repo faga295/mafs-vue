@@ -26,8 +26,8 @@ export default defineComponent({
     const { scaleX, scaleY } = inject(mafsContextInjectionKey, defaultMafsContext)
 
     // scale to real pixel
-    const width = computed(() => props.xLines * scaleX.value)
-    const height = computed(() => props.yLines * scaleY.value)
+    const width = computed(() => scaleX.value(props.xLines))
+    const height = computed(() => scaleY.value(props.yLines))
 		
     const xs = computed(() => range(0, props.xLines * width.value, 1/props.subdivision * width.value))
     const ys = range(0, props.yLines * height.value, 1/props.subdivision * height.value)
@@ -48,7 +48,9 @@ export default defineComponent({
             x2={xAxis} 
             y1={0} 
             y2={this.height} 
-            style={{stroke: 'var(--m-grid-subdivision-color)'}}
+            style={{
+              stroke: 'var(--m-grid-subdivision-color)',
+            }}
           ></line>
         ))}
         {this.ys.map((yAxis: number) => (
@@ -58,7 +60,7 @@ export default defineComponent({
             x2={this.width}
             y2={yAxis}
             style={{
-              stroke: 'var(--m-grid-subdivision-color)'
+              stroke: 'var(--m-grid-subdivision-color)',
             }}
           >
           </line>
@@ -68,14 +70,20 @@ export default defineComponent({
           x2={this.width}
           y1={0}
           y2={this.height}
-          style={{stroke: 'var(--m-grid-line-color)'}}
+          style={{
+            stroke: 'var(--m-grid-line-color)',
+            strokeWidth: "3"
+          }}
         ></line>
         <line
           x1={0}
           x2={this.width}
           y1={this.height}
           y2={this.height}
-          style={{stroke: 'var(--m-grid-line-color)'}}
+          style={{
+            stroke: 'var(--m-grid-line-color)',
+            strokeWidth: "3"
+          }}
         ></line>
       </pattern>
     )

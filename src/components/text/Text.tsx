@@ -26,6 +26,7 @@ export default defineComponent({
   render(){
     return (
       <text
+        style={{fill: "var(--m-text-color)"}}
         x={this.xOffset}
         y={this.yOffset}
       >{this.$slots.default?.()}</text>

@@ -2,6 +2,7 @@ import { defineConfig } from 'vitepress'
 import mdContainer from 'markdown-it-container'
 import fs from 'fs'
 import path from 'path'
+import { highlight } from './utils/highlight'
 
 export default defineConfig({
     themeConfig: {
@@ -65,7 +66,7 @@ export default defineConfig({
                     }
                     if (!source) throw new Error(`Incorrect source file: ${sourceFile}`)
             
-                    return `<Demo :demos="demos" source="${encodeURIComponent(source)}" path="${sourceFile}" raw-source="${encodeURIComponent(
+                    return `<Demo :demos="demos" source="${encodeURIComponent(highlight(source, "vue"))}" path="${sourceFile}" raw-source="${encodeURIComponent(
                       source
                     )}">`
                   } else {

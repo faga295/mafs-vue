@@ -3,6 +3,9 @@ import path from 'path'
 import { MarkdownTransform } from './.vitepress/plugins/mdTransform'
 import Unocss from 'unocss/vite'
 import { presetAttributify, presetUno } from 'unocss'
+import AutoImport from 'unplugin-auto-import/vite'
+import Components from 'unplugin-vue-components/vite'
+import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
 
 export default defineConfig({
   resolve: {
@@ -31,5 +34,21 @@ export default defineConfig({
         // ...custom presets
       ],
     }),
+    AutoImport({
+      imports: [
+        'vue',
+        {
+          'naive-ui': [
+            'useDialog',
+            'useMessage',
+            'useNotification',
+            'useLoadingBar'
+          ]
+        }
+      ]
+    }),
+    Components({
+      resolvers: [NaiveUiResolver()]
+    })
   ]
 })
