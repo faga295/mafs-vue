@@ -19,20 +19,18 @@ export default defineComponent({
   name: 'PlotOfx',
   props: plotOfxProps,
   setup(props){
-    console.log(props.y)
     
     const paneContext = inject(paneContextInjectionKey, defaultPaneContext)
     const mafsContext = inject(mafsContextInjectionKey, defaultMafsContext)
 
     const { scaleX, scaleY } = mafsContext
     const { xRange } = paneContext
-    console.log(scaleX.value, scaleY.value)
     
     const range = computed(() => divide(xRange[0].value, xRange[1].value, 500))
     
     const d = computed(() =>range.value.map((x, index) => {
-      if(!index) return `M ${x * scaleX.value},${props.y(x) * scaleY.value}`
-      return `L ${x * scaleX.value},${props.y(x) * scaleY.value}`
+      if(!index) return `M ${scaleX.value(x)},${scaleY.value(props.y(x))}`
+      return `L ${scaleX.value(x)},${scaleY.value(props.y(x))}`
     }).join(" "))
     return {
       d

@@ -16,8 +16,8 @@ export default defineComponent({
   props: textProps,
   setup(props){
     const { scaleX, scaleY } = inject(mafsContextInjectionKey, defaultMafsContext)
-    const xOffset = computed(() => props.x * scaleX.value)
-    const yOffset = computed(() => -props.y * scaleY.value)
+    const xOffset = computed(() => scaleX.value(props.x))
+    const yOffset = computed(() => scaleY.value(-props.y))
     return {
       xOffset,
       yOffset

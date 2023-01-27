@@ -1,12 +1,6 @@
 <script lang="ts" setup>
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import { CodeOutline } from '@vicons/ionicons5'
-// import hljs from 'highlight.js/lib/core'
-// import javascript from 'highlight.js/lib/languages/javascript'
-// import hljsVuePlugin from "@highlightjs/vue-plugin";
-// import html from 'highlight.js/lib/languages/html'
-// hljs.registerLanguage('html', html)
-// hljs.registerLanguage('javascript', javascript)
 
 const props = defineProps<{
   demos: object

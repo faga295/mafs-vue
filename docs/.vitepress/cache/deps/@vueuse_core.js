@@ -27,8 +27,7 @@ import {
   version,
   watch,
   watchEffect
-} from "./chunk-2PWZCWNT.js";
-import "./chunk-4EOJPDL2.js";
+} from "./chunk-DAKIPLKR.js";
 
 // ../node_modules/.pnpm/vue-demi@0.13.11_vue@3.2.45/node_modules/vue-demi/lib/index.mjs
 var isVue2 = false;

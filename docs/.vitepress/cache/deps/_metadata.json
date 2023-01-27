@@ -1,59 +1,35 @@
 {
-  "hash": "55c19ea5",
-  "browserHash": "3c8e5eb8",
+  "hash": "87d98936",
+  "browserHash": "fa2b90af",
   "optimized": {
     "vue": {
       "src": "../../../../node_modules/.pnpm/vue@3.2.45/node_modules/vue/dist/vue.runtime.esm-bundler.js",
       "file": "vue.js",
-      "fileHash": "335f0ca3",
-      "needsInterop": false
-    },
-    "@vueuse/core": {
-      "src": "../../../../node_modules/.pnpm/@vueuse+core@9.10.0_vue@3.2.45/node_modules/@vueuse/core/index.mjs",
-      "file": "@vueuse_core.js",
-      "fileHash": "4b417bef",
+      "fileHash": "544f849c",
       "needsInterop": false
     },
     "naive-ui": {
-      "src": "../../../../node_modules/.pnpm/naive-ui@2.34.3/node_modules/naive-ui/es/index.js",
+      "src": "../../../../node_modules/.pnpm/naive-ui@2.34.3_vue@3.2.45/node_modules/naive-ui/es/index.js",
       "file": "naive-ui.js",
-      "fileHash": "866172d4",
+      "fileHash": "87075a53",
       "needsInterop": false
     },
     "@vicons/ionicons5": {
       "src": "../../../../node_modules/.pnpm/@vicons+ionicons5@0.12.0/node_modules/@vicons/ionicons5/es/index.js",
       "file": "@vicons_ionicons5.js",
-      "fileHash": "b6f362c3",
+      "fileHash": "9018d7f8",
       "needsInterop": false
     },
-    "highlight.js/lib/core": {
-      "src": "../../../../node_modules/.pnpm/highlight.js@11.7.0/node_modules/highlight.js/es/core.js",
-      "file": "highlight__js_lib_core.js",
-      "fileHash": "35622ed3",
-      "needsInterop": false
-    },
-    "highlight.js/lib/languages/javascript": {
-      "src": "../../../../node_modules/.pnpm/highlight.js@11.7.0/node_modules/highlight.js/es/languages/javascript.js",
-      "file": "highlight__js_lib_languages_javascript.js",
-      "fileHash": "e11c954d",
-      "needsInterop": false
-    },
-    "@highlightjs/vue-plugin": {
-      "src": "../../../../node_modules/.pnpm/@highlightjs+vue-plugin@2.1.0_highlight.js@11.7.0/node_modules/@highlightjs/vue-plugin/dist/highlightjs-vue.esm.min.js",
-      "file": "@highlightjs_vue-plugin.js",
-      "fileHash": "62357037",
+    "@vueuse/core": {
+      "src": "../../../../node_modules/.pnpm/@vueuse+core@9.10.0_vue@3.2.45/node_modules/@vueuse/core/index.mjs",
+      "file": "@vueuse_core.js",
+      "fileHash": "8ef3faa8",
       "needsInterop": false
     }
   },
   "chunks": {
-    "chunk-2PWZCWNT": {
-      "file": "chunk-2PWZCWNT.js"
-    },
-    "chunk-ED6SX2YH": {
-      "file": "chunk-ED6SX2YH.js"
-    },
-    "chunk-4EOJPDL2": {
-      "file": "chunk-4EOJPDL2.js"
+    "chunk-DAKIPLKR": {
+      "file": "chunk-DAKIPLKR.js"
     }
   }
 }

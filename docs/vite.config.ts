@@ -34,21 +34,21 @@ export default defineConfig({
         // ...custom presets
       ],
     }),
-    AutoImport({
-      imports: [
-        'vue',
-        {
-          'naive-ui': [
-            'useDialog',
-            'useMessage',
-            'useNotification',
-            'useLoadingBar'
-          ]
-        }
-      ]
-    }),
-    Components({
-      resolvers: [NaiveUiResolver()]
-    })
+    // AutoImport({
+    //   imports: [
+    //     'vue',
+    //     {
+    //       'naive-ui': [
+    //         'useDialog',
+    //         'useMessage',
+    //         'useNotification',
+    //         'useLoadingBar'
+    //       ]
+    //     }
+    //   ]
+    // }),
+    // Components({
+    //   resolvers: [NaiveUiResolver()]
+    // })
   ]
 })
