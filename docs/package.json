@@ -2,14 +2,13 @@
     "name": "@mafsv/docs",
     "private": true,
     "scripts": {
-        "dev": "vitepress dev"
+        "dev": "vitepress dev",
+        "build": "vitepress build"
     },
     "dependencies": {
-        "@highlightjs/vue-plugin": "^2.1.0",
         "@vicons/ionicons5": "^0.12.0",
         "escape-html": "^1.0.3",
         "fast-glob": "^3.2.12",
-        "highlight.js": "^11.7.0",
         "markdown-it-container": "^3.0.0",
         "naive-ui": "^2.34.3",
         "prism-theme-vars": "^0.2.4",
