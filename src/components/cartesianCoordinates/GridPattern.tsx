@@ -27,7 +27,7 @@ export default defineComponent({
 
     // scale to real pixel
     const width = computed(() => scaleX.value(props.xLines))
-    const height = computed(() => scaleY.value(props.yLines))
+    const height = computed(() => scaleY.value(-props.yLines))
 		
     const xs = computed(() => range(0, props.xLines * width.value, 1/props.subdivision * width.value))
     const ys = range(0, props.yLines * height.value, 1/props.subdivision * height.value)

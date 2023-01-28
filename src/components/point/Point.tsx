@@ -16,9 +16,9 @@ export default defineComponent({
   props: pointProps,
   setup(props){
     const { scaleX, scaleY } = inject(mafsContextInjectionKey, defaultMafsContext)
-    const cx = computed(() => props.x * scaleX.value)
-    const cy = computed(() => props.y * scaleY.value)
-    const r = computed(() => scaleX.value / 10)
+    const cx = computed(() => scaleX.value(props.x))
+    const cy = computed(() => scaleY.value(props.y))
+    const r = computed(() => scaleX.value(1/10))
     return {
       cx,
       cy,

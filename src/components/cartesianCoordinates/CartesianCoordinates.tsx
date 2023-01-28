@@ -1,5 +1,5 @@
 import { range } from "../../utils/range"
-import { defineComponent, h, Fragment, inject, PropType, computed, watch } from "vue"
+import { defineComponent, h, Fragment, inject, PropType, computed, watch, watchEffect } from "vue"
 import { defaultMafsContext, defaultPaneContext, mafsContextInjectionKey, paneContextInjectionKey } from "../mafs/interface"
 import GridPattern from "./GridPattern"
 import type { Axis } from "./interface"
@@ -32,18 +32,20 @@ export default defineComponent({
     const mafsContext = inject(mafsContextInjectionKey, defaultMafsContext)
 
     const { width, height, xRange, yRange } = paneContext
+    const [minX, maxX] = xRange
+    const [minY, maxY] = yRange
 
     const { scaleX, scaleY } = mafsContext
 
     const { line: xLine } = props.xAxis
     const { line: yLine } = props.yAxis
-    const xGridPixel = computed(() => scaleX.value(xLine))
-    const yGridPixel = computed(() => scaleY.value(yLine))
    
-    const xs = range(-Math.ceil(width.value/xGridPixel.value), Math.ceil(width.value/xGridPixel.value), props.xAxis.line)
+    const xs = computed(() => range(Math.round(minX.value), Math.round(maxX.value), props.xAxis.line))
         
-    const ys = range(-Math.ceil(height.value/yGridPixel.value), Math.ceil(height.value/yGridPixel.value), props.yAxis.line)
-
+    const ys = computed(() => range(Math.round(minY.value), Math.round(maxY.value), props.yAxis.line))
+    watchEffect(() => {
+      console.log(ys.value)
+    })
     
 
     return {
@@ -53,7 +55,10 @@ export default defineComponent({
       scaleX,
       scaleY,
       xs,
-      ys
+      ys,
+      minX,
+      minY,
+      maxY
     }
   },
   render(){
@@ -72,7 +77,7 @@ export default defineComponent({
         {
           this.ys.map((line) => {
             if(!line) return
-            return <text style={{fill: "var(--m-text-color)"}} dominant-baseline="central" x={5} y={this.scaleY(-line)}>{this.yAxis.labels(line)}</text>
+            return <text style={{fill: "var(--m-text-color)"}} dominant-baseline="central" x={5} y={this.scaleY(line)}>{this.yAxis.labels(line)}</text>
           })
         }  
       </g>
@@ -82,7 +87,7 @@ export default defineComponent({
         <defs>
           <GridPattern id={this.id} subdivision={this.subdivision} xLines={this.xAxis.line} yLines={this.yAxis.line}></GridPattern>
         </defs>
-        <rect fill={`url(#${this.id})`} width={this.width} height={this.height} x={-Math.round(this.width/2)} y={-Math.round(this.height/2)}></rect>
+        <rect fill={`url(#${this.id})`} width={this.width} height={this.height} x={this.scaleX(this.minX)} y={this.scaleY(this.maxY)}></rect>
         <line x1={10000000} x2={-10000000} y1={0} y2={0} style={{stroke: 'var(--m-grid-axis-color)'}}></line>
         <line x1={0} x2={0} y1={10000000} y2={-10000000} style={{stroke: 'var(--m-grid-axis-color)'}}></line>
 				

@@ -6,7 +6,8 @@ import {
   onMounted,
   computed,
   watch,
-  type PropType
+  type PropType,
+  watchEffect
 } from "vue"
 import { type MafsContext, mafsContextInjectionKey, paneContextInjectionKey, ViewBox } from "./interface"
 import { useResizeObserver, useDraggable } from "@vueuse/core"
@@ -55,13 +56,18 @@ const Mafs = defineComponent({
       xMin: computed(() => viewBox.x[0] - padding + offset.value[0]),
       xMax: computed(() => viewBox.x[1] + padding + offset.value[0]),
       yMin: computed(() => viewBox.y[0] - padding + offset.value[1]),
-      yMax: computed(() => viewBox.y[1] - padding + offset.value[1])
+      yMax: computed(() => viewBox.y[1] + padding + offset.value[1])
     }
+    watchEffect(() => {
+
+      console.log(aoi.yMin.value, aoi.yMax.value)
+    })
+    
     const xSpan = aoi.xMax.value - aoi.xMin.value
     const ySpan = aoi.yMax.value - aoi.yMin.value
 
     const scaleX = computed(() => (val: number) => val *  width.value/(viewBox.x[1] - viewBox.x[0] + padding))
-    const scaleY = computed(() => (val: number) => val * height.value/(viewBox.y[1] - viewBox.y[0] + padding))
+    const scaleY = computed(() => (val: number) => -1 * val * height.value/(viewBox.y[1] - viewBox.y[0] + padding))
 
     const mafsContext:MafsContext = {
       scaleX,
@@ -83,7 +89,7 @@ const Mafs = defineComponent({
           const mx = position.x - (mafsSvgRect.value?.left ?? 0)
           const my = position.y - (mafsSvgRect.value?.top ?? 0)
           offset.value[0] = (-mx/width.value * xSpan)  + offsetStore[0]
-          offset.value[1] = (-my/height.value * ySpan) + offsetStore[1]
+          offset.value[1] = (my/height.value * ySpan) + offsetStore[1]
         },
         initialValue:{
           x: 100,
@@ -126,7 +132,7 @@ const Mafs = defineComponent({
           height={this.height} 
           preserveAspectRatio="xMidYMin"
           style={{background: '#000'}}
-          viewBox={`${this.scaleX(this.aoi.xMin.value)} ${this.scaleY(this.aoi.yMin.value)} ${this.width} ${this.height}`}
+          viewBox={`${this.scaleX(this.aoi.xMin.value)} ${this.scaleY(this.aoi.yMax.value)} ${this.width} ${this.height}`}
         >
           {
             this.$slots.default?.()

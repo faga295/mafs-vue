@@ -45,7 +45,7 @@ export default defineComponent({
         stroke-linecap="round"
         stroke-line-join="round"
         
-        style={{stroke:'var(--m-grid-line-color)'}}
+        style={{stroke:'var(--m-fg)'}}
       ></path>
     )
   }
