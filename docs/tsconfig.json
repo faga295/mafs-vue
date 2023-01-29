@@ -15,7 +15,7 @@
         "mafsv": ["../src"],
         "~/*": ["./.vitepress/*"]
       },
-      "types": ["../volar.d.ts"],
+      "types": ["../volar"],
       "jsx": "preserve",
       "jsxFactory": "h",
       "jsxFragmentFactory": "Fragment"

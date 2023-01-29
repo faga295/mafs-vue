@@ -17,7 +17,7 @@ export default defineComponent({
   setup(props){
     const { scaleX, scaleY } = inject(mafsContextInjectionKey, defaultMafsContext)
     const xOffset = computed(() => scaleX.value(props.x))
-    const yOffset = computed(() => scaleY.value(-props.y))
+    const yOffset = computed(() => scaleY.value(props.y))
     return {
       xOffset,
       yOffset

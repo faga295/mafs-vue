@@ -1,5 +1,5 @@
 <template>
-      <Mafs :view-box="{x:[-7, 7], y:[-3,3]}">
+      <Mafs>
             <Point :x="1" :y="1"></Point>
             <Text>I love coding!</Text>
       </Mafs>

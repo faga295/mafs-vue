@@ -58,16 +58,12 @@ const Mafs = defineComponent({
       yMin: computed(() => viewBox.y[0] - padding + offset.value[1]),
       yMax: computed(() => viewBox.y[1] + padding + offset.value[1])
     }
-    watchEffect(() => {
-
-      console.log(aoi.yMin.value, aoi.yMax.value)
-    })
     
     const xSpan = aoi.xMax.value - aoi.xMin.value
     const ySpan = aoi.yMax.value - aoi.yMin.value
 
-    const scaleX = computed(() => (val: number) => val *  width.value/(viewBox.x[1] - viewBox.x[0] + padding))
-    const scaleY = computed(() => (val: number) => -1 * val * height.value/(viewBox.y[1] - viewBox.y[0] + padding))
+    const scaleX = computed(() => (val: number) => val *  width.value/(viewBox.x[1] - viewBox.x[0] + padding * 2))
+    const scaleY = computed(() => (val: number) => -1 * val * height.value/(viewBox.y[1] - viewBox.y[0] + padding * 2))
 
     const mafsContext:MafsContext = {
       scaleX,
