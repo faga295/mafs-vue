@@ -26,6 +26,8 @@ export default defineComponent({
   render(){
     return (
       <text
+        text-anchor="middle"
+        dominant-baseline="central"
         style={{fill: "var(--m-text-color)"}}
         x={this.xOffset}
         y={this.yOffset}

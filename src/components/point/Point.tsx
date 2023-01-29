@@ -31,6 +31,10 @@ export default defineComponent({
         cx={this.cx}
         cy={this.cy}
         r={this.r}
+        style={{
+          stroke: "var(--m-fg)",
+          fill: "var(--m-fg)"
+        }}
       ></circle>
     )
   }

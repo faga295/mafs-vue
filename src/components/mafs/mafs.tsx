@@ -27,7 +27,7 @@ export const mafsProps = {
     type: Object as PropType<ViewBox>,
     default: () => ({
       x: [-6, 6],
-      y: [-6, 6],
+      y: [-3, 3],
       padding: 0.5
     })
   }
