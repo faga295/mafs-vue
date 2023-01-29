@@ -35,8 +35,8 @@ use [unplugin-auto-import](https://github.com/antfu/unplugin-auto-import) to imp
 plot your first f(x) in your project
 ```javascript
 <Mafs>
-    <CartesianCoordinates :subdivision="4"></CartesianCoordinates>
-    <PlotOfx :y="(x) => Math.sin(x)"></PlotOfx>
+    <CartesianCoordinates></CartesianCoordinates>
+    <PlotOfx :y="Math.sin"></PlotOfx>
 </Mafs>
 ```
 ![](https://lzc-personal-resource.oss-cn-beijing.aliyuncs.com/20230129141130.png)
