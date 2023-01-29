@@ -7,14 +7,14 @@ import { highlight } from './utils/highlight'
 export default defineConfig({
     themeConfig: {
         nav: [
-            { text: 'Guide', link: '/guide' },
+          { text: "Github", link: "https://github.com/faga295/mafs-vue"}
         ],
         sidebar: {
-            '/guide': [
+            '/': [
                 {
                     text: "Introduction",
                     items: [
-                        { text: "mafs-vue", link: '/guide/intro/mafsv'}
+                        { text: "mafs-vue", link: '/'}
                     ]
                 },
                 {
