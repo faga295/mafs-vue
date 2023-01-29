@@ -1,6 +1,6 @@
 {
   "name": "mafsv",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Vue Component for interactive math, reproduction of mafs",
   "main": "lib/index.js",
   "module": "es/index.js",
