@@ -39,3 +39,4 @@ plot your first f(x) in your project
     <PlotOfx :y="(x) => Math.sin(x)"></PlotOfx>
 </Mafs>
 ```
+![](https://lzc-personal-resource.oss-cn-beijing.aliyuncs.com/20230129141130.png)
