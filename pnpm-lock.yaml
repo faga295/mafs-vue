@@ -61,8 +61,8 @@ importers:
 
   docs:
     specifiers:
+      '@faga/escape-html': ^0.0.0
       '@vicons/ionicons5': ^0.12.0
-      escape-html: ^1.0.3
       fast-glob: ^3.2.12
       markdown-it-container: ^3.0.0
       naive-ui: ^2.34.3
@@ -74,8 +74,8 @@ importers:
       vite: ^4.0.4
       vitepress: ^1.0.0-alpha.35
     dependencies:
+      '@faga/escape-html': 0.0.0
       '@vicons/ionicons5': 0.12.0
-      escape-html: 1.0.3
       fast-glob: 3.2.12
       markdown-it-container: 3.0.0
       naive-ui: 2.34.3_vue@3.2.45
@@ -508,6 +508,128 @@ packages:
     transitivePeerDependencies:
       - supports-color
     dev: true
+
+  /@faga/escape-html-android-arm-eabi/0.0.0:
+    resolution: {integrity: sha512-1tRyC0zuWXh3IaS4G6sUm4WTRnc/FKzhsO1kdRSalnrkdb3+ZlV54OY8dFmciRlw4ZKtH35KsFY9PUwCHMu1OA==}
+    engines: {node: '>= 10'}
+    cpu: [arm]
+    os: [android]
+    dev: false
+    optional: true
+
+  /@faga/escape-html-android-arm64/0.0.0:
+    resolution: {integrity: sha512-aWoA3NAIvIQ92q+KhYLSZsdkWHLB1I1wJtej7gNTthuoPrILCQU5PQenML3brfTzrhad3pqcGhSUOHkAcuTllw==}
+    engines: {node: '>= 10'}
+    cpu: [arm64]
+    os: [android]
+    dev: false
+    optional: true
+
+  /@faga/escape-html-darwin-arm64/0.0.0:
+    resolution: {integrity: sha512-EqSx0/rOjDqQ58F1SViTaAXnuJrjmPrulPgXaaNT1xyL+ALKEfu5qStk1PLobJO9wIXYcYYS7vkL1dDHCRum4A==}
+    engines: {node: '>= 10'}
+    cpu: [arm64]
+    os: [darwin]
+    dev: false
+    optional: true
+
+  /@faga/escape-html-darwin-universal/0.0.0:
+    resolution: {integrity: sha512-bdNRLvYf3WrzYK5cmGeunN5G+bWHETj7ox+CT+D16L2hbXmRRMHKWkdOr1weFBu3HzvMJAUwBOU48BBTSvMkxg==}
+    engines: {node: '>= 10'}
+    os: [darwin]
+    dev: false
+    optional: true
+
+  /@faga/escape-html-darwin-x64/0.0.0:
+    resolution: {integrity: sha512-XLMoMPFhbp/d/gNHtsh3lFbHYlt0tpNrNCTc4Lxpvi/Qm7dZunaHxy/DRdXgW06j83PzCHLYmHgtwznchE5QPg==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [darwin]
+    dev: false
+    optional: true
+
+  /@faga/escape-html-linux-arm-gnueabihf/0.0.0:
+    resolution: {integrity: sha512-MhK6Y1nbibSIsE2pHtVcyK+ZubUf+khUWFr546r/a0LIVKialY+Rpf7u8Bg54Pnoi0gOEnK2dBmbY00CXcAb8Q==}
+    engines: {node: '>= 10'}
+    cpu: [arm]
+    os: [linux]
+    dev: false
+    optional: true
+
+  /@faga/escape-html-linux-arm64-gnu/0.0.0:
+    resolution: {integrity: sha512-b8VoWljsp++6/oB2EivTox6urmtq+5CKslS1nHzsTaiadg1DFKl6KBOpmrc0Tll1/Su4JGFPn/c8FC9+dEFcOg==}
+    engines: {node: '>= 10'}
+    cpu: [arm64]
+    os: [linux]
+    dev: false
+    optional: true
+
+  /@faga/escape-html-linux-arm64-musl/0.0.0:
+    resolution: {integrity: sha512-sl2QuSj4Cmr9RNo/ZFu1837xr4GxWOxXk+PvKypRzmoG+JCVmjmGGdGE9q5coEY9C42w5Lc5lT6qkqwHsN3Yng==}
+    engines: {node: '>= 10'}
+    cpu: [arm64]
+    os: [linux]
+    dev: false
+    optional: true
+
+  /@faga/escape-html-linux-x64-gnu/0.0.0:
+    resolution: {integrity: sha512-PRPcyU66UdHUZjA7OHd/eHG3sCLXM2RjvM2ve9OzJks+MzwSCWw6KZm3meJFSaYTBK/t9GlmbC3yW1UwLFmnLQ==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [linux]
+    dev: false
+    optional: true
+
+  /@faga/escape-html-linux-x64-musl/0.0.0:
+    resolution: {integrity: sha512-MeQJOJiD6cb/jPN8XsGgKgYxijum1A5uSuQJPM+5VpQg4CbHZQoVDDBlJe38g3LMe6yyKxHCrRaMKcUDRV2MFw==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [linux]
+    dev: false
+    optional: true
+
+  /@faga/escape-html-win32-arm64-msvc/0.0.0:
+    resolution: {integrity: sha512-KaEnTENzWY2JRa7U1QYf8gVo281DNNaOeL1OPaamY5bhgYbnDFHOzKmx5YJESLKUKmT6FY2VE3iXqqXdCkDYLw==}
+    engines: {node: '>= 10'}
+    cpu: [arm64]
+    os: [win32]
+    dev: false
+    optional: true
+
+  /@faga/escape-html-win32-ia32-msvc/0.0.0:
+    resolution: {integrity: sha512-jOfrNepir4thBrBTNVoB3R8y8uvOc688HcDIRvybt1+xGB2E7unFwTIBoCwAlGnrF33ypcx8pTAcjlLjFKKhAQ==}
+    engines: {node: '>= 10'}
+    cpu: [ia32]
+    os: [win32]
+    dev: false
+    optional: true
+
+  /@faga/escape-html-win32-x64-msvc/0.0.0:
+    resolution: {integrity: sha512-IG9omr+ETobjK5NBkC6nvcQfaES+BBfG+p7c8mySAN7wJCfsbaOH1cGA90DjPIKaIYJP3qN13TItBGwJ3GvIYA==}
+    engines: {node: '>= 10'}
+    cpu: [x64]
+    os: [win32]
+    dev: false
+    optional: true
+
+  /@faga/escape-html/0.0.0:
+    resolution: {integrity: sha512-0w6hnHoOYkSW1lKxWCt3YEvWtTbkGwRZhzwgBMcjRm+ULQimvX72SSiY4AGa9Mflgc6R4HxNK7hF8tE6vTIQpA==}
+    engines: {node: '>= 10'}
+    optionalDependencies:
+      '@faga/escape-html-android-arm-eabi': 0.0.0
+      '@faga/escape-html-android-arm64': 0.0.0
+      '@faga/escape-html-darwin-arm64': 0.0.0
+      '@faga/escape-html-darwin-universal': 0.0.0
+      '@faga/escape-html-darwin-x64': 0.0.0
+      '@faga/escape-html-linux-arm-gnueabihf': 0.0.0
+      '@faga/escape-html-linux-arm64-gnu': 0.0.0
+      '@faga/escape-html-linux-arm64-musl': 0.0.0
+      '@faga/escape-html-linux-x64-gnu': 0.0.0
+      '@faga/escape-html-linux-x64-musl': 0.0.0
+      '@faga/escape-html-win32-arm64-msvc': 0.0.0
+      '@faga/escape-html-win32-ia32-msvc': 0.0.0
+      '@faga/escape-html-win32-x64-msvc': 0.0.0
+    dev: false
 
   /@humanwhocodes/config-array/0.11.8:
     resolution: {integrity: sha512-UybHIJzJnR5Qc/MsD9Kr+RpO2h+/P1GhOwdiLPXK5TWk5sgTdu88bTD9UP+CKbPPh5Rni1u0GjAdYQLemG8g+g==}
@@ -2279,10 +2401,6 @@ packages:
       '@esbuild/win32-arm64': 0.16.17
       '@esbuild/win32-ia32': 0.16.17
       '@esbuild/win32-x64': 0.16.17
-
-  /escape-html/1.0.3:
-    resolution: {integrity: sha512-NiSupZ4OeuGwr68lGIeym/ksIZMJodUGOSCZ/FSnTxcrekbvqrgdUxlJOMpijaKZVjAJrWrGs/6Jy8OMuyj9ow==}
-    dev: false
 
   /escape-string-regexp/4.0.0:
     resolution: {integrity: sha512-TtpcNJ3XAzx3Gq8sWRzJaVajRs0uVxA2YAkdb1jm2YkPz4G6egUFAyA3n5vtEIZefPk5Wa4UXbKuS5fKkJWdgA==}

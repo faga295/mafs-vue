@@ -65,6 +65,7 @@ export default defineConfig({
                         path.resolve(process.cwd(), 'examples', `${sourceFile}.vue`),
                         'utf-8'
                       )
+                      
                     }
                     if (!source) throw new Error(`Incorrect source file: ${sourceFile}`)
             

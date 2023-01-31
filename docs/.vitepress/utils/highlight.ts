@@ -1,5 +1,6 @@
 // ref https://github.com/vuejs/vitepress/blob/main/src/node/markdown/plugins/highlight.ts
-import escapeHtml from 'escape-html'
+// import { escapeHtml } from '@faga/escape-html'
+import { escapeHtml }  from '@faga/escape-html'
 import prism from 'prismjs'
 
 // prism is listed as actual dep so it's ok to require
@@ -20,6 +21,7 @@ export const highlight = (str: string, lang: string) => {
   if (!lang) {
     return wrap(str, 'text')
   }
+  
   lang = lang.toLowerCase()
   const rawLang = lang
   if (lang === 'vue' || lang === 'html') {
@@ -44,5 +46,6 @@ export const highlight = (str: string, lang: string) => {
     const code = prism.highlight(str, prism.languages[lang], lang)
     return wrap(code, rawLang)
   }
+  
   return wrap(str, 'text')
 }
