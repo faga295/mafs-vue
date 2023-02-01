@@ -1,1 +1,1 @@
-export { default as Point } from './Point'
+export { default as Point, type PointPropsType } from './Point'

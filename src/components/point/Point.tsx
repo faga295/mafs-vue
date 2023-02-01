@@ -1,24 +1,26 @@
-import { defineComponent, h, inject, computed } from "vue"
+import { defineComponent, h, inject, computed, defineExpose, defineProps, watchEffect, ref } from "vue"
 import { defaultMafsContext, mafsContextInjectionKey } from "../mafs/interface"
 
+export interface PointPropsType {
+  x: number,
+  y: number
+}
 const pointProps = {
-  x:{
-    type: Number,
-    default: 0
-  },
-  y:{
-    type: Number,
-    default: 0
-  }
+  x: Number,
+  y: Number
 }
 export default defineComponent({
   name: 'Point',
   props: pointProps,
-  setup(props){
+  setup(props, {expose}){
     const { scaleX, scaleY } = inject(mafsContextInjectionKey, defaultMafsContext)
-    const cx = computed(() => scaleX.value(props.x))
-    const cy = computed(() => scaleY.value(props.y))
+    const cx = computed(() => scaleX.value(props?.x ?? 0))
+    const cy = computed(() => scaleY.value(props?.y ?? 0))
     const r = computed(() => scaleX.value(1/10))
+    expose({
+      x: ref(props.x),
+      y: ref(props.y)
+    })
     return {
       cx,
       cy,

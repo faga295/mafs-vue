@@ -27,10 +27,11 @@ export default defineConfig({
                 {
                     text: 'component',
                     items: [
-                        { text: "mafs", link: "/guide/component/mafs"},
-                        { text: "cartesianCoordinates", link: "/guide/component/cartesianCoordinates"},
-                        { text: "point", link: "/guide/component/point"},
-                        { text: "text", link: "/guide/component/text"}
+                        { text: "Mafs", link: "/guide/component/mafs"},
+                        { text: "CartesianCoordinates", link: "/guide/component/cartesianCoordinates"},
+                        { text: "Point", link: "/guide/component/point"},
+                        { text: "Text", link: "/guide/component/text"},
+                        { text: "Line", link: "/guide/component/line"}
                     ]
                 }
             ]

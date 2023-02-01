@@ -3,7 +3,6 @@ import * as components from './component'
 
 function registerComponent(app:App, component:Component){
   const { name } = component
-  console.log(component)
   if(!name) return 
   const registered = name && app.component(name)
   if(!registered) {

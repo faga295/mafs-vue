@@ -1,6 +1,6 @@
 import { createApp } from 'vue'
 import Mafsv from 'mafsv'
-import '../../src/style/mafs.scss'
+import '../../src/style/index.scss'
 import App from './App.vue'
 
 

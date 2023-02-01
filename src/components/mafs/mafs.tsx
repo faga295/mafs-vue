@@ -38,7 +38,7 @@ const Mafs = defineComponent({
   props: mafsProps,
   setup(props){
     const { viewBox } = props
-    const width = ref<number>(1)
+    const width = ref<number>(500)
     const height = ref<number>(props.height)
     const offset = ref<[number, number]>([0, 0])
     // some superfluous action since useDraggable design discrepancies

@@ -43,9 +43,6 @@ export default defineComponent({
     const xs = computed(() => range(Math.round(minX.value), Math.round(maxX.value), props.xAxis.line))
         
     const ys = computed(() => range(Math.round(minY.value), Math.round(maxY.value), props.yAxis.line))
-    watchEffect(() => {
-      console.log(ys.value)
-    })
     
 
     return {
