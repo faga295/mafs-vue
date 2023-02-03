@@ -11,6 +11,7 @@ import {
 } from "vue"
 import { type MafsContext, mafsContextInjectionKey, paneContextInjectionKey, ViewBox } from "./interface"
 import { useResizeObserver, useDraggable } from "@vueuse/core"
+import useDrag from "../../utils/useDrag"
 
 export const mafsProps = {
   width: {
@@ -42,7 +43,7 @@ const Mafs = defineComponent({
     const height = ref<number>(props.height)
     const offset = ref<[number, number]>([0, 0])
     // some superfluous action since useDraggable design discrepancies
-    let offsetStore: [number, number]= [0, 0]
+    const offsetStore: [number, number]= [0, 0]
 
     const desiredWidth = props.width === 'auto' ? '100%' : props.width
 
@@ -75,23 +76,34 @@ const Mafs = defineComponent({
         const entry = entries[0]
         width.value = entry.contentRect.width
       })
-      useDraggable(mafsSvgRef.value, {
-        preventDefault: true,
-        onStart(){
-          offsetStore = [...offset.value]
-        },
-        draggingElement: mafsSvgRef.value,
-        onMove(position){
-          const mx = position.x - (mafsSvgRect.value?.left ?? 0)
-          const my = position.y - (mafsSvgRect.value?.top ?? 0)
-          offset.value[0] = (-mx/width.value * xSpan)  + offsetStore[0]
-          offset.value[1] = (my/height.value * ySpan) + offsetStore[1]
-        },
-        initialValue:{
-          x: 100,
-          y: 100
+      console.log(mafsSvgRef)
+      
+      useDrag(mafsSvgRef.value!, {
+        stopPropagation: true,
+        onMove(_, { mx, my }){
+          console.log('move')
+          
+          offset.value[0] += (-mx/width.value * xSpan)
+          offset.value[1] += (my/height.value * ySpan) 
         }
       })
+      // useDraggable(mafsSvgRef.value, {
+      //   preventDefault: true,
+      //   onStart(){
+      //     offsetStore = [...offset.value]
+      //   },
+      //   draggingElement: mafsSvgRef.value,
+      //   onMove(position){
+      //     const mx = position.x - (mafsSvgRect.value?.left ?? 0)
+      //     const my = position.y - (mafsSvgRect.value?.top ?? 0)
+      //     offset.value[0] = (-mx/width.value * xSpan)  + offsetStore[0]
+      //     offset.value[1] = (my/height.value * ySpan) + offsetStore[1]
+      //   },
+      //   initialValue:{
+      //     x: 100,
+      //     y: 100
+      //   }
+      // })
     })
     provide(
       mafsContextInjectionKey,

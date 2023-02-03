@@ -6,30 +6,41 @@ export interface PointPropsType {
   y: number
 }
 const pointProps = {
-  x: Number,
-  y: Number
+  x: {
+    type: Number,
+    default: 0
+  },
+  y: {
+    type: Number,
+    default: 0
+  },
 }
 export default defineComponent({
   name: 'Point',
   props: pointProps,
   setup(props, {expose}){
     const { scaleX, scaleY } = inject(mafsContextInjectionKey, defaultMafsContext)
-    const cx = computed(() => scaleX.value(props?.x ?? 0))
-    const cy = computed(() => scaleY.value(props?.y ?? 0))
+    const circleRef = ref()
+    const cx = computed(() => scaleX.value(props.x))
+    const cy = computed(() => scaleY.value(props.y))
     const r = computed(() => scaleX.value(1/10))
+    
     expose({
       x: ref(props.x),
-      y: ref(props.y)
+      y: ref(props.y),
+      $el: circleRef
     })
     return {
       cx,
       cy,
-      r
+      r,
+      circleRef
     }
   },
   render() {
     return (
       <circle
+        ref="circleRef"
         cx={this.cx}
         cy={this.cy}
         r={this.r}

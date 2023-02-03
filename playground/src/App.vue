@@ -18,6 +18,7 @@
           <Point :x="2" :y="2"></Point>
         </template>
       </Line>
+      <MovablePoint :x="2" :y="4"></MovablePoint>      
     </Mafs>
   </div>
 </template>
