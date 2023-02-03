@@ -78,7 +78,7 @@ const Mafs = defineComponent({
       })
       console.log(mafsSvgRef)
       
-      useDrag(mafsSvgRef.value!, {
+      useDrag(mafsSvgRef.value, {
         stopPropagation: true,
         onMove(_, { mx, my }){
           console.log('move')

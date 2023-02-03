@@ -20,9 +20,8 @@ interface Options{
     onEnd?: (position: Position, e: PointerEvent) => void
 }
 
-export default function useDrag(target: HTMLElement, options: Options){
-  console.log(target)
-    
+export default function useDrag(target: HTMLElement | undefined | null, options: Options){
+  if(!target) return
   const draggingElement = window
   const pressedDelta = ref()
   const position = ref<Position>({ x: 0, y: 0})
