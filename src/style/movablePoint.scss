@@ -1,0 +1,18 @@
+.mafs-movable-point-hitbox{
+    fill: transparent;
+    cursor: grab;
+    // &:hover{
+    //     --m-movable-point-size: var(--m-movable-point-hover-size)
+    // };
+}
+.mafs-movable-point-ring{
+    fill: var(--m-movable-point-color);
+    fill-opacity: 0.25;
+    cursor: grab;
+}
+
+.mafs-movable-point-point {
+    fill: var(--m-movable-point-color);
+    transition: r .2s ease;
+    cursor: grab;
+}

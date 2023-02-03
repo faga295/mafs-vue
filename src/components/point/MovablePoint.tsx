@@ -1,4 +1,4 @@
-import { defineComponent, h, inject, onMounted, ref, watchEffect } from 'vue'
+import { defineComponent, h, inject, onMounted, ref, computed, watch } from 'vue'
 import useDrag from '../../utils/useDrag'
 import Point from './Point'
 import { defaultMafsContext, mafsContextInjectionKey } from '../mafs/interface'
@@ -11,45 +11,67 @@ const movablePointProps = {
 export default defineComponent({
   name: "MovablePoint",
   props: movablePointProps,
-  setup(props) {
+  setup(props, { expose }) {
     const pointRef = ref()
     const { scaleX, scaleY } = inject(mafsContextInjectionKey, defaultMafsContext)
-    // const { x, y, style } = useDraggable(pointRef.value?.$el, {
-    //   onMove(position){
-    //     console.log(position)
-    //   }
-    // })
-    const cx = ref(props.x ?? 0)
+    const cx = ref<number>(props.x ?? 0)
     const cy = ref(props.y ?? 0)
+    const r = computed(() => scaleX.value(1/10))
+    const r1 = computed(() => scaleX.value(1/6))
+    const r2 = computed(() => scaleX.value(1/4))
+    const r3 = computed(() => scaleX.value(1/2))
     
+    const pointR = ref(r.value)
+    watch(r, (r) => {
+      pointR.value = r
+    })
     onMounted(() => {
-      useDrag(pointRef.value.$el, {
+      useDrag(pointRef.value, {
         stopPropagation: true,
         preventDefault: true,
-        
-        onMove(position, {mx, my}){
-          console.log(mx, my)
-            
-          cx.value += mx / scaleX.value(1)
-          cy.value += my/ scaleY.value(1)
-          //   const mx = position.x - (mafsSvgRect.value?.left ?? 0)
-          //   const my = position.y - (mafsSvgRect.value?.top ?? 0)
-          //   offset.value[0] = (-mx/width.value * xSpan)  + offsetStore[0]
-          //   offset.value[1] = (my/height.value * ySpan) + offsetStore[1]
+        onMove(_, {mx, my}){
+          cx.value += mx
+          cy.value += my
         }
       })
     })
-    
+    expose({
+      x: cx,
+      y: cy
+    })
+
     return {
       pointRef,
       cx,
-      cy
-    //   style,
+      cy,
+      r,
+      r1,
+      r2,
+      r3,
+      pointR,
     }
   },
   render(){
     return (
-      <Point x={this.cx} y={this.cy} ref="pointRef" ></Point>
+      <g>
+        {/* <circle cx={this.cx} cy={this.cy} r={this.r2} style={{fill: 'var(--m-movable-point-color)'}}></circle> */}
+        <circle 
+          cx={this.cx} 
+          cy={this.cy} 
+          r={this.pointR} 
+          class="mafs-movable-point-point"          
+        ></circle>
+        <circle cx={this.cx} cy={this.cy} r={this.r2} class="mafs-movable-point-ring"></circle>
+        <circle 
+          cx={this.cx} 
+          cy={this.cy} 
+          r={this.r3}  
+          ref="pointRef" 
+          class="mafs-movable-point-hitbox"
+          onMouseenter={() => this.pointR = this.r1}
+          onMouseleave={() => this.pointR = this.r}
+          style={{"--m-movable-point-hover-size": this.r2}}></circle>
+      </g>
     )
   }
 })
