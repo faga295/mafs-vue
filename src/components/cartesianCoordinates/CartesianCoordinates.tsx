@@ -39,11 +39,11 @@ export default defineComponent({
 
     const { line: xLine } = props.xAxis
     const { line: yLine } = props.yAxis
-   
-    const xs = computed(() => range(Math.round(minX.value), Math.round(maxX.value), props.xAxis.line))
-        
-    const ys = computed(() => range(Math.round(minY.value), Math.round(maxY.value), props.yAxis.line))
     
+   
+    const xs = computed(() => range(minX.value, maxX.value, xLine))
+        
+    const ys = computed(() => range(minY.value, maxY.value, yLine))
 
     return {
       id,

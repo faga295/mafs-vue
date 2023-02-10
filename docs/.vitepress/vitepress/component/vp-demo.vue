@@ -26,9 +26,7 @@ const toggleCodeVisible = () => {
     codeVisible.value = !codeVisible.value
 }
 const code = computed(() => decodeURIComponent(props.source))
-console.log(code);
 
-// console.log(code);
 
 </script>
 

@@ -65,7 +65,6 @@ const Mafs = defineComponent({
 
     const scaleX = computed(() => (val: number) => val *  width.value/(viewBox.x[1] - viewBox.x[0] + padding * 2))
     const scaleY = computed(() => (val: number) => -1 * val * height.value/(viewBox.y[1] - viewBox.y[0] + padding * 2))
-
     const mafsContext:MafsContext = {
       scaleX,
       scaleY
@@ -76,12 +75,10 @@ const Mafs = defineComponent({
         const entry = entries[0]
         width.value = entry.contentRect.width
       })
-      console.log(mafsSvgRef)
       
       useDrag(mafsSvgRef.value, {
         stopPropagation: true,
         onMove(_, { mx, my }){
-          console.log('move')
           
           offset.value[0] += (-mx/width.value * xSpan)
           offset.value[1] += (my/height.value * ySpan) 
