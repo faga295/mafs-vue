@@ -44,7 +44,8 @@ export default function useDrag(target: HTMLElement | undefined | null, options:
   const move = (e: PointerEvent) => {
     if (!pressedDelta.value)
       return
-    
+    const { left, right, top, bottom } = target.getBoundingClientRect()
+    if(e.clientX < left || e.clientX > right || e.clientY < top || e.clientY > bottom) return
     position.value = {
       x: e.clientX,
       y: e.clientY,
