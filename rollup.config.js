@@ -10,7 +10,6 @@
 import path from 'path'
 import { defineConfig } from 'rollup'
 import esbuild from 'rollup-plugin-esbuild'
-import terser from '@rollup/plugin-terser'
 import nodeResolve from '@rollup/plugin-node-resolve'
 import sass from 'rollup-plugin-sass'
 import merge from 'deepmerge'

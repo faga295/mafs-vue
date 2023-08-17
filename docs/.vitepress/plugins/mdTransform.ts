@@ -8,7 +8,7 @@ type Append = Record<'headers' | 'footers' | 'scriptSetups', string[]>
 
 export function MarkdownTransform(): Plugin {
   return {
-    name: 'element-plus-md-transform',
+    name: 'md-transform',
     enforce: 'pre',
     async transform(code, id) {
       if (!id.endsWith('.md')) return

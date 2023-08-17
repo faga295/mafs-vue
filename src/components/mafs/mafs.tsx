@@ -79,28 +79,10 @@ const Mafs = defineComponent({
       useDrag(mafsSvgRef.value, {
         stopPropagation: true,
         onMove(_, { mx, my }){
-          
           offset.value[0] += (-mx/width.value * xSpan)
           offset.value[1] += (my/height.value * ySpan) 
         }
       })
-      // useDraggable(mafsSvgRef.value, {
-      //   preventDefault: true,
-      //   onStart(){
-      //     offsetStore = [...offset.value]
-      //   },
-      //   draggingElement: mafsSvgRef.value,
-      //   onMove(position){
-      //     const mx = position.x - (mafsSvgRect.value?.left ?? 0)
-      //     const my = position.y - (mafsSvgRect.value?.top ?? 0)
-      //     offset.value[0] = (-mx/width.value * xSpan)  + offsetStore[0]
-      //     offset.value[1] = (my/height.value * ySpan) + offsetStore[1]
-      //   },
-      //   initialValue:{
-      //     x: 100,
-      //     y: 100
-      //   }
-      // })
     })
     provide(
       mafsContextInjectionKey,
