@@ -7,6 +7,7 @@ declare module '@vue/runtime-core' {
       PlotOfx: typeof import('mafsv')['PlotOfx']
       Point: typeof import('mafsv')['Point']
       Text: typeof import('mafsv')['Text']
+      Vector: typeof import('mafsv')['Vector']
        
   }
 }

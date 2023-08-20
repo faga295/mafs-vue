@@ -1,5 +1,5 @@
 import { useEventListener } from "@vueuse/core"
-import { unref, ref } from "vue"
+import { ref } from "vue"
 
 type Fn = () => void
 
