@@ -1,2 +1,3 @@
-export * from './components'
-export { default } from './installer'
+export * from "./components";
+export { default } from "./installer";
+export { vec } from "./components/vector";

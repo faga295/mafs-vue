@@ -28,7 +28,7 @@ export default defineComponent({
       scaleX.value(props.tip[0]),
       scaleY.value(props.tip[1]),
     ]);
-    console.log(tail.value, tip.value);
+
     return {
       tail,
       tip,
