@@ -2,7 +2,6 @@
 import { vec } from "mafsv";
 const vec1: vec.Vector = [1, 1];
 const angle = Math.atan2(vec1[1], vec1[0]);
-console.log(angle);
 
 const vec2 = vec.add(vec1, vec.rotate(vec1, angle));
 const vec3 = vec.add(vec1, vec.rotate(vec2, -2 * angle));

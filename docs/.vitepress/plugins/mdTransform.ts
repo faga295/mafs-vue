@@ -1,26 +1,26 @@
-import fs from 'fs'
-import path from 'path'
-import glob from 'fast-glob'
+import fs from "fs";
+import path from "path";
+import glob from "fast-glob";
 
-import type { Plugin } from 'vite'
+import type { Plugin } from "vite";
 
-type Append = Record<'headers' | 'footers' | 'scriptSetups', string[]>
+type Append = Record<"headers" | "footers" | "scriptSetups", string[]>;
 
 export function MarkdownTransform(): Plugin {
   return {
-    name: 'md-transform',
-    enforce: 'pre',
+    name: "md-transform",
+    enforce: "pre",
     async transform(code, id) {
-      if (!id.endsWith('.md')) return
+      if (!id.endsWith(".md")) return;
 
-      const componentId = path.basename(id, '.md')
+      const componentId = path.basename(id, ".md");
       const append: Append = {
         headers: [],
         footers: [],
         scriptSetups: [
           `const demos = import.meta.globEager('../../examples/${componentId}/*.vue')`,
         ],
-      }
+      };
 
       // code = transformVpScriptSetup(code, append)
 
@@ -39,35 +39,36 @@ export function MarkdownTransform(): Plugin {
       //   [combineScriptSetup(append.scriptSetups), ...append.headers],
       //   append.footers
       // )
-      return combineScriptSetup(append.scriptSetups) + code
+      return combineScriptSetup(append.scriptSetups) + code;
     },
-  }
+  };
 }
 
 const combineScriptSetup = (codes: string[]) =>
   `\n<script setup>
-${codes.join('\n')}
+${codes.join("\n")}
 </script>
-`
+`;
 
 const combineMarkdown = (
   code: string,
   headers: string[],
   footers: string[]
 ) => {
-  const frontmatterEnds = code.indexOf('---\n\n') + 4
-  const firstSubheader = code.search(/\n## \w/)
-  const sliceIndex = firstSubheader < 0 ? frontmatterEnds : firstSubheader
+  const frontmatterEnds = code.indexOf("---\n\n") + 4;
+  const firstSubheader = code.search(/\n## \w/);
+  const sliceIndex = firstSubheader < 0 ? frontmatterEnds : firstSubheader;
 
   if (headers.length > 0)
     code =
-      code.slice(0, sliceIndex) + headers.join('\n') + code.slice(sliceIndex)
-  code += footers.join('\n')
+      code.slice(0, sliceIndex) + headers.join("\n") + code.slice(sliceIndex);
+  code += footers.join("\n");
 
-  return `${code}\n`
-}
+  return `${code}\n`;
+};
 
-const vpScriptSetupRE = /<vp-script\s(.*\s)?setup(\s.*)?>([\s\S]*)<\/vp-script>/
+const vpScriptSetupRE =
+  /<vp-script\s(.*\s)?setup(\s.*)?>([\s\S]*)<\/vp-script>/;
 
 // const transformVpScriptSetup = (code: string, append: Append) => {
 //   const matches = code.match(vpScriptSetupRE)
