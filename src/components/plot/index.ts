@@ -1,1 +1,1 @@
-export { default as PlotOfx } from './PlotOfx'
+export { default as PlotOfx } from "./PlotOfx";

@@ -53,7 +53,7 @@ ${codes.join("\n")}
 const combineMarkdown = (
   code: string,
   headers: string[],
-  footers: string[]
+  footers: string[],
 ) => {
   const frontmatterEnds = code.indexOf("---\n\n") + 4;
   const firstSubheader = code.search(/\n## \w/);

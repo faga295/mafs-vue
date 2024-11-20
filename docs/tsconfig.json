@@ -1,26 +1,25 @@
 {
-    "compilerOptions": {
-      "target": "ESNext",
-      "module": "ESNext",
-      "moduleResolution": "Node",
-      "resolveJsonModule": true,
-      "allowSyntheticDefaultImports": true,
-      "esModuleInterop": true,
-      "forceConsistentCasingInFileNames": true,
-      "strict": true,
-      "noImplicitAny": false,
-      "skipLibCheck": true,
-      "lib": ["WebWorker"],
-      "paths": {
-        "mafsv": ["../src"],
-        "~/*": ["./.vitepress/*"]
-      },
-      "types": ["../volar"],
-      "jsx": "preserve",
-      "jsxFactory": "h",
-      "jsxFragmentFactory": "Fragment"
+  "compilerOptions": {
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "noImplicitAny": false,
+    "skipLibCheck": true,
+    "lib": ["WebWorker"],
+    "paths": {
+      "mafsv": ["../src"],
+      "~/*": ["./.vitepress/*"]
     },
-    "include": ["**/*", ".vitepress/**/*"],
-    "exclude": ["node_modules"]
-  }
-  
+    "types": ["../volar"],
+    "jsx": "preserve",
+    "jsxFactory": "h",
+    "jsxFragmentFactory": "Fragment"
+  },
+  "include": ["**/*", ".vitepress/**/*"],
+  "exclude": ["node_modules"]
+}

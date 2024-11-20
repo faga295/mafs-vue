@@ -17,7 +17,7 @@ export default defineComponent({
   setup(props) {
     const { scaleX, scaleY } = inject(
       mafsContextInjectionKey,
-      defaultMafsContext
+      defaultMafsContext,
     );
 
     const tail = computed(() => [

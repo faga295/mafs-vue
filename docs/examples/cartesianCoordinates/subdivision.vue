@@ -1,5 +1,5 @@
 <template>
-    <Mafs>
-        <CartesianCoordinates :subdivision="4"></CartesianCoordinates>
-    </Mafs>
+  <Mafs>
+    <CartesianCoordinates :subdivision="4"></CartesianCoordinates>
+  </Mafs>
 </template>

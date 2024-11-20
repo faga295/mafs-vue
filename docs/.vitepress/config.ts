@@ -64,16 +64,16 @@ export default defineConfig({
             if (sourceFileToken.type === "inline") {
               source = fs.readFileSync(
                 path.resolve(process.cwd(), "examples", `${sourceFile}.vue`),
-                "utf-8"
+                "utf-8",
               );
             }
             if (!source)
               throw new Error(`Incorrect source file: ${sourceFile}`);
 
             return `<Demo :demos="demos" source="${encodeURIComponent(
-              highlight(source, "vue")
+              highlight(source, "vue"),
             )}" path="${sourceFile}" raw-source="${encodeURIComponent(
-              source
+              source,
             )}">`;
           } else {
             return "</Demo>";

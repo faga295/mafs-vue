@@ -1,24 +1,24 @@
 {
-    "name": "@mafsv/docs",
-    "private": true,
-    "scripts": {
-        "dev": "vitepress dev",
-        "build": "vitepress build"
-    },
-    "dependencies": {
-        "@faga/escape-html": "^0.0.0",
-        "@vicons/ionicons5": "^0.12.0",
-        "fast-glob": "^3.2.12",
-        "markdown-it-container": "^3.0.0",
-        "naive-ui": "^2.34.3",
-        "prism-theme-vars": "^0.2.4",
-        "prismjs": "^1.29.0",
-        "vitepress": "^1.0.0-alpha.35"
-    },
-    "devDependencies": {
-        "unocss": "^0.48.4",
-        "unplugin-auto-import": "^0.12.1",
-        "unplugin-vue-components": "^0.22.12",
-        "vite": "^4.0.4"
-    }
+  "name": "@mafsv/docs",
+  "private": true,
+  "scripts": {
+    "dev": "vitepress dev",
+    "build": "vitepress build"
+  },
+  "dependencies": {
+    "@faga/escape-html": "^0.0.0",
+    "@vicons/ionicons5": "^0.12.0",
+    "fast-glob": "^3.2.12",
+    "markdown-it-container": "^3.0.0",
+    "naive-ui": "^2.34.3",
+    "prism-theme-vars": "^0.2.4",
+    "prismjs": "^1.29.0",
+    "vitepress": "^1.0.0-alpha.35"
+  },
+  "devDependencies": {
+    "unocss": "^0.48.4",
+    "unplugin-auto-import": "^0.12.1",
+    "unplugin-vue-components": "^0.22.12",
+    "vite": "^4.0.4"
+  }
 }

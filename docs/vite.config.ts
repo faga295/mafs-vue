@@ -1,35 +1,37 @@
-import { defineConfig } from 'vite'
-import path from 'path'
-import { MarkdownTransform } from './.vitepress/plugins/mdTransform'
-import Unocss from 'unocss/vite'
-import { presetAttributify, presetUno } from 'unocss'
-import AutoImport from 'unplugin-auto-import/vite'
-import Components from 'unplugin-vue-components/vite'
-import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
+import { defineConfig } from "vite";
+import path from "path";
+import { MarkdownTransform } from "./.vitepress/plugins/mdTransform";
+import Unocss from "unocss/vite";
+import { presetAttributify, presetUno } from "unocss";
+import AutoImport from "unplugin-auto-import/vite";
+import Components from "unplugin-vue-components/vite";
+import { NaiveUiResolver } from "unplugin-vue-components/resolvers";
 
 export default defineConfig({
   resolve: {
     alias: [
       {
         find: /^mafsv$/,
-        replacement: path.resolve(__dirname, '../src/index')
+        replacement: path.resolve(__dirname, "../src/index"),
       },
       {
-        find: '~/',
-        replacement: `${path.resolve(__dirname, './.vitepress/vitepress')}/`,
+        find: "~/",
+        replacement: `${path.resolve(__dirname, "./.vitepress/vitepress")}/`,
       },
-    ]
+    ],
   },
-  esbuild:{
+  esbuild: {
     jsx: "transform",
     jsxFactory: "h",
-    jsxFragment: "Fragment"
+    jsxFragment: "Fragment",
   },
-  plugins: [ 
-    MarkdownTransform(), 
+  plugins: [
+    MarkdownTransform(),
     Unocss({
       presets: [
-        presetAttributify({ /* preset options */}),
+        presetAttributify({
+          /* preset options */
+        }),
         presetUno(),
         // ...custom presets
       ],
@@ -50,5 +52,5 @@ export default defineConfig({
     // Components({
     //   resolvers: [NaiveUiResolver()]
     // })
-  ]
-})
+  ],
+});

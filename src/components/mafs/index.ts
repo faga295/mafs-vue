@@ -1,1 +1,1 @@
-export { default as Mafs, mafsProps } from './mafs'
+export { default as Mafs, mafsProps } from "./mafs";

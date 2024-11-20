@@ -7,38 +7,38 @@
 // const commonjs = require('@rollup/plugin-commonjs')
 // const esbuild = require('rollup-plugin-esbuild').default
 // const terser = require('@rollup/plugin-terser')
-import path from 'path'
-import { defineConfig } from 'rollup'
-import esbuild from 'rollup-plugin-esbuild'
-import nodeResolve from '@rollup/plugin-node-resolve'
-import sass from 'rollup-plugin-sass'
-import merge from 'deepmerge'
+import path from "path";
+import { defineConfig } from "rollup";
+import esbuild from "rollup-plugin-esbuild";
+import nodeResolve from "@rollup/plugin-node-resolve";
+import sass from "rollup-plugin-sass";
+import merge from "deepmerge";
 
-const extensions = ['.mjs', '.js', '.json', '.ts']
+const extensions = [".mjs", ".js", ".json", ".ts"];
 
 const baseConfig = defineConfig({
-  input: path.resolve('./src/index.ts'),
+  input: path.resolve("./src/index.ts"),
   plugins: [
     nodeResolve({ extensions }),
     esbuild({
-      tsconfig: path.resolve('./tsconfig.base.json'),
-      target: 'esnext',
-      sourceMap: true
+      tsconfig: path.resolve("./tsconfig.base.json"),
+      target: "esnext",
+      sourceMap: true,
     }),
     sass({
-      output: 'dist/bundle.css'
-    })
+      output: "dist/bundle.css",
+    }),
   ],
-  external: ['vue'],
+  external: ["vue"],
   output: {
-    name: 'mafsv',
-    format: 'umd',
-    exports: 'named',
+    name: "mafsv",
+    format: "umd",
+    exports: "named",
     globals: {
-      vue: 'Vue'
-    }
-  }
-})
+      vue: "Vue",
+    },
+  },
+});
 
 // const devConfig = defineConfig({
 //   plugins: [
@@ -56,11 +56,10 @@ const baseConfig = defineConfig({
 // })
 
 const prodConfig = defineConfig({
-  plugins: [
-  ],
+  plugins: [],
   output: {
-    file: path.resolve('dist/index.prod.js')
-  }
-})
+    file: path.resolve("dist/index.prod.js"),
+  },
+});
 
-export default [merge(baseConfig, prodConfig)]
+export default [merge(baseConfig, prodConfig)];

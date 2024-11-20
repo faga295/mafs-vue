@@ -1,69 +1,86 @@
-import { defineComponent, computed, h, inject } from "vue"
-import { range } from '../../utils/range'
-import { defaultMafsContext, mafsContextInjectionKey } from "../mafs/interface"
+import { defineComponent, computed, h, inject } from "vue";
+import { range } from "../../utils/range";
+import { defaultMafsContext, mafsContextInjectionKey } from "../mafs/interface";
 
 const gridPatternProps = {
   id: {
-    type: String
+    type: String,
   },
   xLines: {
     type: Number,
-    default: 1
+    default: 1,
   },
   yLines: {
     type: Number,
-    default: 1
+    default: 1,
   },
   subdivision: {
     type: Number,
-    default: 1
-  }
-}
+    default: 1,
+  },
+};
 export default defineComponent({
-  name: 'GridPattern',
+  name: "GridPattern",
   props: gridPatternProps,
-  setup(props){
-    const { scaleX, scaleY } = inject(mafsContextInjectionKey, defaultMafsContext)
+  setup(props) {
+    const { scaleX, scaleY } = inject(
+      mafsContextInjectionKey,
+      defaultMafsContext,
+    );
 
     // scale to real pixel
-    const width = computed(() => scaleX.value(props.xLines))
-    const height = computed(() => scaleY.value(-props.yLines))
-		
-    const xs = computed(() => range(0, props.xLines * width.value, 1/props.subdivision * width.value))
-    const ys = range(0, props.yLines * height.value, 1/props.subdivision * height.value)
-        
+    const width = computed(() => scaleX.value(props.xLines));
+    const height = computed(() => scaleY.value(-props.yLines));
+
+    const xs = computed(() =>
+      range(
+        0,
+        props.xLines * width.value,
+        (1 / props.subdivision) * width.value,
+      ),
+    );
+    const ys = range(
+      0,
+      props.yLines * height.value,
+      (1 / props.subdivision) * height.value,
+    );
+
     return {
       width,
       height,
       xs,
-      ys
-    }
+      ys,
+    };
   },
-  render(){
+  render() {
     return (
-      <pattern id={this.id}  patternUnits="userSpaceOnUse" width={this.width} height={this.height}>
+      <pattern
+        id={this.id}
+        patternUnits="userSpaceOnUse"
+        width={this.width}
+        height={this.height}
+      >
         {this.xs.map((xAxis: number) => (
           <line
-            x1={xAxis} 
-            x2={xAxis} 
-            y1={0} 
-            y2={this.height} 
+            x1={xAxis}
+            x2={xAxis}
+            y1={0}
+            y2={this.height}
             style={{
-              stroke: 'var(--m-grid-subdivision-color)',
+              stroke: "var(--m-grid-subdivision-color)",
             }}
           ></line>
         ))}
         {this.ys.map((yAxis: number) => (
-          <line 
-            x1={0}  
+          <line
+            x1={0}
             y1={yAxis}
             x2={this.width}
             y2={yAxis}
             style={{
-              stroke: 'var(--m-grid-subdivision-color)',
+              stroke: "var(--m-grid-subdivision-color)",
             }}
-          >
-          </line>
+          ></line>
         ))}
         <line
           x1={this.width}
@@ -71,8 +88,8 @@ export default defineComponent({
           y1={0}
           y2={this.height}
           style={{
-            stroke: 'var(--m-grid-line-color)',
-            strokeWidth: "3"
+            stroke: "var(--m-grid-line-color)",
+            strokeWidth: "3",
           }}
         ></line>
         <line
@@ -81,11 +98,11 @@ export default defineComponent({
           y1={this.height}
           y2={this.height}
           style={{
-            stroke: 'var(--m-grid-line-color)',
-            strokeWidth: "3"
+            stroke: "var(--m-grid-line-color)",
+            strokeWidth: "3",
           }}
         ></line>
       </pattern>
-    )
-  }
-})
+    );
+  },
+});

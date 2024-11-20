@@ -1,17 +1,17 @@
 {
-    "extends": "./tsconfig.base.json",
-    "compilerOptions": {
-        "baseUrl": ".",
-        // "paths": {
-        //     "mafsv": ["src/*"]
-        // },
-        "composite": true
-    },
-    "include": [
-        "playground/src/*.vue",
-        "playground/main.ts",
-        "src/**/*.ts",
-        "src/**/*.tsx",
-        "./volar.d.ts"
-    ]
+  "extends": "./tsconfig.base.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    // "paths": {
+    //     "mafsv": ["src/*"]
+    // },
+    "composite": true
+  },
+  "include": [
+    "playground/src/*.vue",
+    "playground/main.ts",
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "./volar.d.ts"
+  ]
 }
