@@ -1,4 +1,4 @@
-# Mafs-vue(WIP)
+# Mafs-vue
 
 Vue Component for interactive math, reproduction of [mafs](https://github.com/stevenpetryk/mafs)
 
@@ -31,10 +31,6 @@ const app = createApp(App);
 app.use(Mafsv);
 app.mount("#app");
 ```
-
-### Unplugin import(WIP)
-
-use [unplugin-auto-import](https://github.com/antfu/unplugin-auto-import) to import components
 
 ### f(x)
 
