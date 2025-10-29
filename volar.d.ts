@@ -8,6 +8,7 @@ declare module "@vue/runtime-core" {
     Point: (typeof import("mafsv"))["Point"];
     Text: (typeof import("mafsv"))["Text"];
     Vector: (typeof import("mafsv"))["Vector"];
+    Image: (typeof import("mafsv"))["Image"];
   }
 }
 export {};

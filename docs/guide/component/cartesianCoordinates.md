@@ -17,3 +17,7 @@ Making our graph a little bit more sophisticated-looking by adding some subdivis
 cartesianCoordinates/subdivision
 
 :::
+
+## Props
+
+- `subdivision` – number of minor grid lines between major lines, defaults to `1`.

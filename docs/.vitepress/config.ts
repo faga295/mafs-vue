@@ -1,10 +1,10 @@
-import { defineConfig } from "vitepress";
+import type { UserConfig } from "vitepress";
 import mdContainer from "markdown-it-container";
 import fs from "fs";
 import path from "path";
 import { highlight } from "./utils/highlight";
 
-export default defineConfig({
+const config: UserConfig = {
   themeConfig: {
     nav: [{ text: "Github", link: "https://github.com/faga295/mafs-vue" }],
     sidebar: {
@@ -32,6 +32,7 @@ export default defineConfig({
             { text: "Text", link: "/guide/component/text" },
             { text: "Line", link: "/guide/component/line" },
             { text: "Vector", link: "/guide/component/vector" },
+            { text: "Image", link: "/guide/component/image" },
           ],
         },
       ],
@@ -82,4 +83,6 @@ export default defineConfig({
       });
     },
   },
-});
+};
+
+export default config;

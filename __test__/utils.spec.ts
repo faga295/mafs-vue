@@ -1,4 +1,5 @@
 import { round, closestMultiple, range } from "../src/utils/range";
+import { computeAnchor } from "../src/utils/math";
 
 describe("range", () => {
   it("round", () => {
@@ -11,5 +12,15 @@ describe("range", () => {
   });
   it("range", () => {
     expect(range(-5, 5, 3.14)).toStrictEqual([-3.14, 0, 3.14]);
+  });
+});
+
+describe("computeAnchor", () => {
+  it("computes bottom-left anchor", () => {
+    expect(computeAnchor("bl", 2, 3, 4, 5)).toStrictEqual([2, 8]);
+  });
+
+  it("computes center anchor", () => {
+    expect(computeAnchor("cc", 6, -1, 2, 2)).toStrictEqual([5, 0]);
   });
 });

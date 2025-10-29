@@ -2,10 +2,10 @@
 // import { escapeHtml } from '@faga/escape-html'
 import { escapeHtml } from "@faga/escape-html";
 import prism from "prismjs";
+import loadLanguages from 'prismjs/components/index'
 
 // prism is listed as actual dep so it's ok to require
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const loadLanguages = require("prismjs/components/index");
 
 // required to make embedded highlighting work...
 loadLanguages(["markup", "css", "javascript"]);

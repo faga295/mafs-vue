@@ -6,3 +6,4 @@ export { Text } from "./components/text";
 export { Line } from "./components/line";
 export { MovablePoint } from "./components/point";
 export { Vector } from "./components/vector";
+export { Image } from "./components/image";
